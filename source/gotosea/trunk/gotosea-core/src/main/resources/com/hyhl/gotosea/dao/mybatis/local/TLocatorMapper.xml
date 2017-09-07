@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.local.mapper.TLocatorMapper">
+    <select id="listLocatorByIds" resultType="TLocator">
+        SELECT * FROM t_locator WHERE id IN
+        <foreach item="id" collection="ids" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="listLocatorByCond" parameterType="TLocator" resultType="TLocator">
+        SELECT * from t_locator
+        <where>
+            <if test="locatorTypeId!=null">
+                and locator_type_id = #{locatorTypeId}
+            </if>
+            <if test="name!=null and name!=''">
+                and name like CONCAT('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

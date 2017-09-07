@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.CustMapper">
+	<select id="selectAlls" resultType="com.hyhl.gotosea.core.cust.po.Cust">
+		select * from t_cust
+	</select>
+
+	<select id="selectAllByIds" resultType="Cust">
+		SELECT * from t_cust where cust_id in
+		<foreach item="custId" collection="list" open="(" separator="," close=")">
+			#{custId}
+		</foreach>
+	</select>
+</mapper>

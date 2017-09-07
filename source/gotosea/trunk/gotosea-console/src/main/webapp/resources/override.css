@@ -1,0 +1,9 @@
+.x-action-col-icon {
+    height: 16px;
+    width: 16px;
+}
+
+.x-form-item-default.x-item-disabled {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    opacity: 0.7;
+}

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.article.dao.ArticleMapper">
+
+	<sql id="all_columns">id,business_unit_id,title,summary,thumbnail,release_date,author,read_quantity,thumb_quantity,html_file,status</sql>
+
+	<!--获取所有文章(client)-->
+	<select id="selectAll" resultType="Article">
+		select <include refid="all_columns"/> from t_article WHERE status = 1 ORDER BY release_date DESC
+	</select>
+
+	<!--搜索文章-->
+	<!--<select id="searchArt" resultType="Article">-->
+		<!--SELECT <include refid="all_columns"/> FROM t_article WHERE title like CONCAT('%', #{keyWord}, '%') AND business_unit_id = #{bizId}-->
+	<!--</select>-->
+
+	<!--创建文章-->
+	<insert id="createArt" parameterType="ArticleDto">
+		INSERT INTO t_article(business_unit_id,title,summary,
+		thumbnail,release_date,read_quantity,thumb_quantity,
+		html_file,status)
+		VALUES (#{businessUnitId},#{title},#{summary},#{thumbnail},now(),1,1,#{htmlFile},0)
+	</insert>
+
+
+	<!--更新文章-->
+	<update id="updateArt" parameterType="ArticleDto">
+		UPDATE t_article
+		<trim prefix="set" suffixOverrides=",">
+			<if test="articleDto.businessUnitId!=null">business_unit_id=#{articleDto.businessUnitId},</if>
+			<if test="articleDto.title!=null">title=#{articleDto.title},</if>
+			<if test="articleDto.summary!=null">summary=#{articleDto.summary},</if>
+			<if test="articleDto.thumbnail!=null">thumbnail=#{articleDto.thumbnail},</if>
+			<if test="articleDto.htmlFile!=null">html_file=#{articleDto.htmlFile},</if>
+			<if test="articleDto.status!=null">status=#{articleDto.status},</if>
+		</trim>
+		WHERE id=#{articleDto.id}
+	</update>
+
+	<!--修改文章分类-->
+	<!--<update id="cngBiz" parameterType="integer">-->
+		<!--UPDATE t_article SET business_unit_id = #{bizId} where id = #{artId}-->
+	<!--</update>-->
+
+	<!--根据tagId获取不重复文章列表(client)-->
+	<select id="getArtByTags" resultType="Article">
+		select <include refid="all_columns"/>
+		from t_article
+		WHERE id in
+		(select distinct article_id from t_article_tag where tag_id in
+		<foreach item="tagId" collection="tags" open="(" separator="," close=")">
+			#{tagId}
+		</foreach>
+		) and status = 1 ORDER BY release_date DESC
+	</select>
+
+	<!--通过id获取一片文章-->
+	<select id="getArtById" parameterType="integer" resultType="Article">
+		select <include refid="all_columns"/> FROM t_article WHERE id = #{id} AND status=1
+	</select>
+
+	<!--更新阅读量-->
+	<update id="readArticle">
+		update t_article set read_quantity = read_quantity+1 WHERE id = #{artId}
+	</update>
+
+	<!--更新点赞量-->
+	<update id="thumbArticle">
+		update t_article set thumb_quantity = thumb_quantity+1 WHERE id = #{artId}
+	</update>
+
+	<!--根据业务线获取文章列表-->
+	<!--<select id="getArtsByBizId" parameterType="integer" resultType="Article">-->
+		<!--select <include refid="all_columns"/> from t_article where business_unit_id = #{bizId} AND status = 1 ORDER BY release_date DESC-->
+	<!--</select>-->
+
+	<!--根据id批量删除文章-->
+	<delete id="deleteArts">
+		DELETE from t_article where id in
+		<foreach item="id" collection="artIds" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<!--通过条件列举文章-->
+	<select id="listArtByCond" resultType="Article" parameterType="SearchCond">
+		SELECT <include refid="all_columns"/> FROM t_article
+		<where>
+			status = 1
+			<if test="searchCond.keyword!=null and searchCond.keyword!=''">
+				and title like CONCAT('%', #{searchCond.keyword}, '%')
+			</if>
+			<if test="searchCond.bizId!=null and searchCond.bizId!=0">
+				and business_unit_id = #{searchCond.bizId}
+			</if>
+			<if test="searchCond.startTime!=null">
+				and release_date &gt;= #{searchCond.startTime}
+			</if>
+			<if test="searchCond.endTime!=null">
+				and release_date &lt;= #{searchCond.endTime}
+			</if>
+		</where>
+		ORDER BY release_date DESC
+	</select>
+</mapper>

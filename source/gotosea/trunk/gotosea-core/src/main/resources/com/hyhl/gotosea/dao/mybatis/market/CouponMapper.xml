@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.market.mapper.CouponMapper" >
+    
+    <select id="getCouponVo" resultType="com.hyhl.gotosea.core.market.vo.CouponVo" >
+    	select c.id as couponId,c.name as name, ts.name as couponScope ,(cc.coupon_num-cc.used_num) as surplusNum, c.amount ,
+    			c.consumption_min ,cc.begin_date , cc.end_date
+    		from t_coupon c,t_cust_coupon cc,t_coupon_type ct ,t_apply_scope ts
+    		where 1=1 and c.id = cc.coupon_id and c.coupon_type_id =ct.id and c.apply_scope_id =ts.id  
+    	<if test="custId !=null">and cc.cust_id=#{custId} </if> 
+    	<if test="typeId !=null">and c.coupon_type_id =#{typeId}</if>
+    	<if test="status !=null and status!=''">and c.status =#{status}</if>
+    	and <![CDATA[cc.used_num<cc.coupon_num]]>
+    </select>
+    
+    <select id="getAll" resultType="com.hyhl.gotosea.core.market.vo.CouponVo" >
+    	SELECT c.id AS couponId,c.name AS NAME, ts.name AS couponScope ,(cc.coupon_num-cc.used_num) AS surplusNum, c.amount ,c.`credits`, c.consumption_min ,cc.begin_date , cc.end_date 
+			FROM t_coupon c 
+			LEFT JOIN t_cust_coupon cc ON c.id =cc.`coupon_id`
+			LEFT JOIN t_apply_scope ts  ON (c.apply_scope_id =ts.id) 
+			WHERE c.`status`=0
+    </select>
+    
+</mapper>

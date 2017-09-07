@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.WithdrawRequestMapper">
+
+	<select id="findWithdrawRequests" resultType="com.hyhl.gotosea.core.cust.vo.WithdrawRequestPagerVO">
+		SELECT
+			w.id,
+			w.cust_id,
+			w.req_money,
+			w.req_time,
+			w.card_id,
+			w.`status`,
+			m.real_name,
+			m.phone,
+			b.card_no,
+			b.account_name,
+			b.card_type,
+			wallet.total_money,
+			wallet.pre_pay_money
+		FROM
+			t_withdraw_request AS w
+			INNER JOIN t_wallet AS wallet ON wallet.cust_id = w.cust_id
+			INNER JOIN t_bank_card AS b ON b.id = w.card_id
+			INNER JOIN t_merchant AS m ON m.cust_id = w.cust_id
+		WHERE
+			w.`status` in
+			<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item}
+			</foreach>
+			<if test="phone!=null">
+			AND
+				w.phone = #{phone}
+			</if>
+			<if test="cardNo!=null">
+			AND
+				b.card_no = #{cardNo}
+			</if>
+			<if test="status!=null">
+			AND
+				w.status = #{status}
+			</if>
+		ORDER BY W.id DESC
+	</select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.ref.mapper.FeatureTagMapper">
+	
+	<select id="findFeatureTags" resultMap="Feature_Tags_Map">
+		select 
+			f1.id,
+			f1.pid,
+			f1.tag_type_id,
+			f1.`name`,
+			f1.`level`,
+			f2.id as f2_id,
+			f2.pid as f2_pid,
+			f2.tag_type_id as f2_tag_type_id,
+			f2.`name` as f2_name,
+			f2.`level` as f2_level
+		FROM
+			t_feature_tag f1
+		LEFT JOIN t_feature_tag f2 ON f1.id=f2.pid
+		WHERE
+			f1.pid=0
+		<if test="tagTypeId!=null">
+		AND
+			f1.tag_type_id=#{tagTypeId}
+		</if>
+	</select>
+
+	<!--根据批量id和level获取feature_tag-->
+	<select id="selectByIdsAndLevel" resultType="FeatureTag">
+		SELECT * from t_feature_tag where id IN
+		<foreach collection="ids" item="id" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+		AND level = #{level}
+	</select>
+
+	<resultMap type="com.hyhl.gotosea.core.ref.vo.FeatureTagVO" id="Feature_Tags_Map">
+		<id column="id" property="id"/>
+		<result column="pid" property="pid"/>
+		<result column="tag_type_id" property="tagTypeId"/>
+		<result column="name" property="name"/>
+		<result column="level" property="level"/>
+		<collection property="tags" javaType="java.util.List" ofType="com.hyhl.gotosea.core.ref.vo.FeatureTagVO">
+			<id column="f2_id" property="id"/>
+			<result column="f2_pid" property="pid"/>
+			<result column="f2_tag_type_id" property="tagTypeId"/>
+			<result column="f2_name" property="name"/>
+			<result column="f2_level" property="level"/>
+		</collection>
+	</resultMap>
+	
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.comm.dao.TPostMapper" >
+  <!--&lt;!&ndash;插入帖子&ndash;&gt;-->
+  <!--<insert id="insertPost" parameterType="PostDto" useGeneratedKeys="true" keyColumn="id">-->
+    <!--insert INTO-->
+    <!--t_post (cust_id,content,post_time,post_location,section_id,attachment_num,thumbs_num,comments_num,business_unit_id-->
+    <!--<if test="activityId!=null and activityId!=0">-->
+      <!--,activity_id-->
+    <!--</if>-->
+    <!--)-->
+    <!--VALUES (#{custId},#{content},now(),#{postLocation},#{sectionId},#{attachmentNum},1,1,#{businessUnitId}-->
+    <!--<if test="activityId!=null and activityId!=0">-->
+      <!--,#{activityId}-->
+    <!--</if>-->
+    <!--)-->
+  <!--</insert>-->
+
+  <!--根据条件列举帖子(活动约伴 动态分享 仅好友可见)-->
+  <select id="listPostByCond" parameterType="PostCond" resultType="TPost">
+    SELECT * FROM t_post
+    <where>
+      <if test="sectionId!=null">
+        and section_id = #{sectionId}
+      </if>
+      <if test="visitorId ==null and postCustId == null">
+        and only_for_mutual_fans =0
+      </if>
+      <if test="visitorId!=null and postCustId==null">
+        and (only_for_mutual_fans =0 OR (cust_id in (select fans from t_cust_contact where star = #{visitorId}
+        and mutual_fans = 1) and only_for_mutual_fans = 1) or cust_id = #{visitorId})
+      </if>
+      <if test="postCustId!=null">
+        and cust_id = #{postCustId}
+      </if>
+      <if test="bizId!=null and bizId!=0">
+        and business_unit_id = #{bizId}
+      </if>
+    </where>
+    ORDER BY post_time DESC
+  </select>
+
+  <!--通过参加活动的用户获取活动的帖子-->
+  <select id="listPostByActCust" parameterType="string" resultType="TPost">
+    SELECT * from t_post post WHERE post.activity_id in
+    (SELECT activity_id from t_activity_cust WHERE cust_id = #{custId})
+    and post.section_id=2
+    ORDER BY post_time DESC
+  </select>
+</mapper>

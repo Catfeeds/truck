@@ -1,0 +1,1423 @@
+			<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>App接口说明文档_V1.0</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+		        body {
+            color: #666666;
+            font-family: 微软雅黑,Verdana,sans-serif,宋体;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: #999999;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #16B28F;
+        }
+        .sin_navi ul {
+            list-style: none outside none;
+            margin: 0;
+            padding: 0 0 0 10px;
+        }
+        .sin_navi ul li {
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        li {
+            line-height: 24px;
+        }
+        table {
+            border-left: 1px solid #CCCCCC;
+            border-top: 1px solid #CCCCCC;
+            margin: 5px 10px;
+            text-align: left;
+            width: 678px;
+        }
+        table th {
+            background-color: #EEEEEE;
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+            padding: 10px;
+        }
+        table td {
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+        }
+        p {
+            line-height: 24px;
+            margin: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #111111;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 26px;
+        }
+        h2 {
+            border-bottom: 1px dashed #CCCCCC;
+            font-size: 24px;
+            padding: 10px 0;
+        }
+        h3 {
+            font-size: 20px;
+            padding: 8px 0;
+        }
+        h4 {
+            font-size: 18px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h5 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h6 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        blockquote {
+            background: url("../../../img/blockquote.gif") no-repeat scroll left top #F4F5F7;
+            margin: 5px 10px;
+            padding: 10px 10px 10px 30px;
+        }
+        pre {
+            background: none repeat scroll 0 0 #EEEEEE;
+            margin: 5px 10px;
+            padding: 10px;
+        }
+        .sin_callout {
+            margin: 5px 10px;
+        }
+        .sin_header {
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #CCCCCC;
+            height: 80px;
+            width: 100%;
+        }
+        .sin_title {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_title_text {
+            color: #000000;
+            float: left;
+            line-height: 80px;
+        }
+        .sin_version {
+            color: #999999;
+            float: left;
+            font-size: 14px;
+            padding-top: 25px;
+            margin-left: 10px;
+        }
+        .sin_main {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_navi {
+            float: left;
+            margin-bottom: 20px;
+            overflow-y: scroll;
+            padding: 0;
+            position: relative;
+            width: 279px;
+            z-index: 1;
+        }
+        .sin_navi_nomove {
+            position: fixed;
+            top: 0;
+        }
+        .sin_navi_ca a {
+            color: #333333;
+        }
+        .sin_navi_ca a:hover {
+            color: #16B28F;
+        }
+        .sin_navi_current {
+            border-right: 3px solid #16B28F;
+        }
+        .sin_navi_current a {
+            color: #16B28F;
+        }
+        .sin_content {
+            background-color: #FFFFFF;
+            border-left: 1px solid #CCCCCC;
+            float: left;
+            margin-left: -20px;
+            padding: 10px 20px;
+            position: relative;
+            width: 699px;
+            z-index: 2;
+        }
+        .sin_content_mar {
+            margin-left: 259px;
+        }
+        .sin_footer {
+            border-top: 1px solid #CCCCCC;
+            color: #999999;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sin_info {
+            background: none repeat scroll 0 0 #FFFFCC;
+            border: 1px solid #D5D4D4;
+            border-radius: 4px 4px 4px 4px;
+            color: #999999;
+            margin: 10px 0;
+            padding: 14px;
+        }
+        .sin_link_logo {
+            color: #16B28F;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .sin_text {
+            margin-bottom: 10px;
+        }
+        .d_callout {
+            margin-bottom: 10px;
+        }
+        .d_callout_info {
+            background: none repeat scroll 0 0 #F4F8FA;
+            border-left: 4px solid #5BC0DE;
+            padding: 10px;
+        }
+        .d_callout_warn {
+            background: none repeat scroll 0 0 #FCF8F2;
+            border-left: 4px solid #F0AD4E;
+            padding: 10px;
+        }
+        .d_callout_danger {
+            background: none repeat scroll 0 0 #FDF7F7;
+            border-left: 4px solid #D9534F;
+            padding: 10px;
+        }
+        .d_callout_success {
+            background: none repeat scroll 0 0 #F3F8F3;
+            border-left: 4px solid #50AF51;
+            padding: 10px;
+        }
+        .d_callout input {
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 15px;
+            margin-bottom: 5px;
+            padding: 10px 5px 0 10px;
+        }
+        .d_callout textarea {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .d_callout_icons a {
+            color: #AAAAAA;
+            margin-left: 10px;
+        }
+        a.d_callout_icon_info {
+            color: #5BC0DE;
+        }
+        a.d_callout_icon_warn {
+            color: #F0AD4E;
+        }
+        a.d_callout_icon_danger {
+            color: #D9534F;
+        }
+        a.d_callout_icon_success {
+            color: #50AF51;
+        }
+        .clear {
+            clear: both;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="sin_header">
+		<div class="sin_title">
+			<h1 class="sin_title_text">App接口说明文档</h1>
+			<span class="sin_version">V1.0</span>
+			<div class="clear"></div>
+		</div>
+		<div id="top_end"></div>
+	</div>
+	<div class="sin_main">
+		<div class="sin_navi" id="sin_navi_id">
+			<ul style="margin: 20px 0;">
+				    																																													<li style="width: 246px;" id="navi_text_208892">
+									<a href="#text_208892">
+										接口概要说明
+									</a>	
+								</li>
+																															<li class="sin_navi_ca" style="width: 246px;" id="navi_category_51326">
+								<a href="#category_51326">
+									用户
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_208868">
+						<a href="#text_208868">
+							用户登录-密码登录
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_208888">
+						<a href="#text_208888">
+							用户注册
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209775">
+						<a href="#text_209775">
+							用户登录-验证码登录
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209779">
+						<a href="#text_209779">
+							用户登出
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209788">
+						<a href="#text_209788">
+							忘记密码/重置密码
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209793">
+						<a href="#text_209793">
+							用户密码管理
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_51407">
+								<a href="#category_51407">
+									文章
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_209449">
+						<a href="#text_209449">
+							首页推荐文章列表
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209455">
+						<a href="#text_209455">
+							根据文章id获取文章
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209460">
+						<a href="#text_209460">
+							点赞一篇文章
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_209551">
+						<a href="#text_209551">
+							根据业务id获取文章列表
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_51408">
+								<a href="#category_51408">
+									产品
+								</a>
+							</li>
+																										</ul>
+		</div>
+		<div class="sin_content" id="sin_content_id">
+																													<h2 id="text_208892" class="sin_target">接口概要说明</h2>
+<div class="sin_text">
+    					<h2>接口传输协议</h2>
+<p>本项目中的所有接口都是基于HTTP(s)协议传输数据<br><a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html" rel="nofollow">HTTP协议</a></p>
+<h2>接口命名规范</h2> 
+<ul> 
+ <li><p>接口统一使用Rest Api的风格，如<br> 新增用户:post /user<br> 删除用户:delete /user/1<br> 修改用户:put /user/1<br> 获取用户信息:get /user/1<br> 获取用户列表:get /users<br> 查询用户:get /users?name=XXX</p></li> 
+ <li><p>接口定义应该简洁，能使用小写尽量使用小写</p></li> 
+ <li><p>接口统一以/rest/开头，参考以下格式：<br> /rest/{对象缩写}/{对象ID}<br> /rest/{对象缩写}/{对象ID}/{内嵌对象}/{内嵌对象ID}<br> /rest/{对象缩写}/{对象动作}<br> /rest/{对象分类}/{对象缩写}/{对象ID}</p></li> 
+</ul>
+<h2>接口格式规范</h2> 
+<ul> 
+ <li>返回值格式<br>本项目中所有接口都会以下如的格式返回数据：<br> <pre><code><br>{
+   code:'',    //状态码
+   message:'', //消息字段，如果出现业务错误，返回业务错误的具体信息
+   data:''     //业务数据字段
+}
+</code></pre></li> 
+ <li>返回码格式<br>业务错误统一返回 <pre><code><br>非业务错误根据当前情况返回对应的HTTP状态码,如</code></pre>401<code>,</code>404```。</li> 
+</ul>
+			</div>
+
+																										<h2 id="category_51326">用户</h2>
+																								<h3 id="text_208868" class="sin_target">用户登录-密码登录</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户登录-手机号密码</p>
+<h4>请求路径</h4> 
+<pre><code>post /rest/user/loginpwd
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+</tbody></table>
+<p>| phone | 是 | String | 手机号 | - |<br>| password | 是 | String | 用户密码 | - |</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":{
+        "account":"abc123",
+        "name":"游客_sadas",
+        "phone":"15218320000",
+        "email":"41222@qq.com",
+        "sex":"1",
+        "picture":"http:dioaiosjdi.jpg", 
+        "level":"1",
+        "createTime":"2017-01-01",
+        "status":"1",
+        "merchant":"0"
+    }
+}
+</code></pre>
+<h4>返回字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>account </td> 
+   <td>String </td> 
+   <td>用户帐号 </td> 
+  </tr> 
+  <tr> 
+   <td>name </td> 
+   <td>String </td> 
+   <td>用户姓名 </td> 
+  </tr> 
+  <tr> 
+   <td>phone </td> 
+   <td>String </td> 
+   <td>手机号码 </td> 
+  </tr> 
+  <tr> 
+   <td>email </td> 
+   <td>String </td> 
+   <td>邮箱 </td> 
+  </tr> 
+  <tr> 
+   <td>sex </td> 
+   <td>number </td> 
+   <td>性别 </td> 
+  </tr> 
+  <tr> 
+   <td>picture </td> 
+   <td>String </td> 
+   <td>头像 </td> 
+  </tr> 
+  <tr> 
+   <td>level </td> 
+   <td>number </td> 
+   <td>等级 </td> 
+  </tr> 
+  <tr> 
+   <td>createTime </td> 
+   <td>String </td> 
+   <td>注册日期 </td> 
+  </tr> 
+  <tr> 
+   <td>status </td> 
+   <td>number </td> 
+   <td>客户状态0–失效，1–生效 </td> 
+  </tr> 
+  <tr> 
+   <td>merchant </td> 
+   <td>number </td> 
+   <td>商家标记0–未申请商家身份，1–已申请商家身份 </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>400 </td> 
+   <td>parameter_error </td> 
+   <td>手机号格式错误 </td> 
+  </tr> 
+  <tr> 
+   <td>401 </td> 
+   <td>invalid_password </td> 
+   <td>密码错误 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_208888" class="sin_target">用户注册</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户注册</p>
+<h4>请求路径</h4> 
+<pre><code>post /rest/user/register
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+</tbody></table>
+<p>| password | 是 | String | 用户密码 | - |</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":""
+}
+</code></pre>
+<h4>返回字段说明</h4>
+<p>无</p>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>400 </td> 
+   <td>parameter_error </td> 
+   <td>请求参数缺失或格式不正确 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_209775" class="sin_target">用户登录-验证码登录</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户登录-手机号验证码登录</p>
+<h4>请求路径</h4> 
+<pre><code>post /rest/user/logincode
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+</tbody></table>
+<p>| phone | 是 | String | 手机号 | - |<br>| code | 是 | String | 验证码 | - |</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":{
+        "account":"abc123",
+        "name":"游客_sadas",
+        "phone":"15218320000",
+        "email":"41222@qq.com",
+        "sex":"1",
+        "picture":"http:dioaiosjdi.jpg", 
+        "level":"1",
+        "createTime":"2017-01-01",
+        "status":"1",
+        "merchant":"0"
+    }
+}
+</code></pre>
+<h4>返回字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>account </td> 
+   <td>String </td> 
+   <td>用户帐号 </td> 
+  </tr> 
+  <tr> 
+   <td>name </td> 
+   <td>String </td> 
+   <td>用户姓名 </td> 
+  </tr> 
+  <tr> 
+   <td>phone </td> 
+   <td>String </td> 
+   <td>手机号码 </td> 
+  </tr> 
+  <tr> 
+   <td>email </td> 
+   <td>String </td> 
+   <td>邮箱 </td> 
+  </tr> 
+  <tr> 
+   <td>sex </td> 
+   <td>number </td> 
+   <td>性别 </td> 
+  </tr> 
+  <tr> 
+   <td>picture </td> 
+   <td>String </td> 
+   <td>头像 </td> 
+  </tr> 
+  <tr> 
+   <td>level </td> 
+   <td>number </td> 
+   <td>等级 </td> 
+  </tr> 
+  <tr> 
+   <td>createTime </td> 
+   <td>String </td> 
+   <td>注册日期 </td> 
+  </tr> 
+  <tr> 
+   <td>status </td> 
+   <td>number </td> 
+   <td>客户状态0–失效，1–生效 </td> 
+  </tr> 
+  <tr> 
+   <td>merchant </td> 
+   <td>number </td> 
+   <td>商家标记0–未申请商家身份，1–已申请商家身份 </td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+</tbody></table>
+<p>| 401 | code_error | 验证码错误 |<br>| 403 | code_get_error | 获取验证码次数过多或验证错误次数过多 |</p>
+			</div>
+
+																						<h3 id="text_209779" class="sin_target">用户登出</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户登出</p>
+<h4>请求路径</h4> 
+<pre><code>get /rest/user/logout
+</code></pre>
+<h4>是否需要登录</h4>
+<p>是</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":""
+}
+</code></pre>
+<h4>返回字段说明</h4>
+<p>无</p>
+			</div>
+
+																						<h3 id="text_209788" class="sin_target">忘记密码/重置密码</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户忘记密码/重置密码</p>
+<h4>请求路径</h4> 
+<pre><code>put /rest/user/resetpwd
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>必须先调用sms接口获取短信验证码</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+</tbody></table>
+<p>| code | 是 | String | 验证码 | - |<br>| password | 是 | String | 新密码 | - |</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":{}
+}
+</code></pre>
+<h4>返回字段说明</h4>
+<p>无</p>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>400 </td> 
+   <td>parameter_error </td> 
+   <td>请求参数缺失或格式不正确 </td> 
+  </tr> 
+  <tr> 
+   <td>401 </td> 
+   <td>code_error </td> 
+   <td>验证码错误 </td> 
+  </tr> 
+  <tr> 
+   <td>403 </td> 
+   <td>code_get_error </td> 
+   <td>获取验证码次数过多或验证错误次数过多 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_209793" class="sin_target">用户密码管理</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>用户密码管理</p>
+<h4>请求路径</h4> 
+<pre><code>put /rest/user/updatepwd
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>是</p>
+<h4>访问限制</h4>
+<p>无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+</tbody></table>
+<p>| password | 是 | String | 新密码 | - |</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code":200,
+    "message":"",
+    "data":{}
+}
+</code></pre>
+<h4>返回字段说明</h4>
+<p>无</p>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>400 </td> 
+   <td>parameter_error </td> 
+   <td>请求参数缺失或格式不正确 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																														<h2 id="category_51407">文章</h2>
+																								<h3 id="text_209449" class="sin_target">首页推荐文章列表</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>获取首页推荐文章列表</p>
+<h4>请求路径</h4> 
+<pre><code>get /rest/art/recarts
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4>
+<p>| 参数名 | 是否必选 | 类型 | 说明 | 默认值 |<br>|pageNum|否|Integer|当前页数|1|<br>|pageSize|否|Integer|页大小|10|</p>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code": "200",
+    "message": "ok",
+    "data": {
+        "total": 4,
+        "pageNum": 1,
+        "pageSize": 10,
+        "pages": 1,
+        "data": [
+            {
+                "id": 1,
+                "businessUnitName": "海钓",
+                "title": "test",
+                "summary": "test",
+                "thumbnail": "test",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 8
+            },
+            {
+                "id": 2,
+                "businessUnitName": "海钓",
+                "title": "title",
+                "summary": "概要",
+                "thumbnail": "缩略图",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            },
+            {
+                "id": 4,
+                "businessUnitName": "海钓",
+                "title": "haha",
+                "summary": "介绍一下",
+                "thumbnail": "http://www.youniwo.com",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            },
+            {
+                "id": 5,
+                "businessUnitName": "海钓",
+                "title": "haha",
+                "summary": "介绍一下",
+                "thumbnail": "http://www.youniwo.com",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            }
+        ]
+    }
+}
+</code></pre>
+<h4>返回字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>total</td> 
+   <td>Long</td> 
+   <td>信息总条数</td> 
+  </tr> 
+  <tr> 
+   <td>pageNum</td> 
+   <td>Integer</td> 
+   <td>当前页</td> 
+  </tr> 
+  <tr> 
+   <td>pageSize</td> 
+   <td>Integer</td> 
+   <td>页大小</td> 
+  </tr> 
+  <tr> 
+   <td>pages</td> 
+   <td>Integer</td> 
+   <td>总页数</td> 
+  </tr> 
+  <tr> 
+   <td>id </td> 
+   <td>Integer</td> 
+   <td>文章ID </td> 
+  </tr> 
+  <tr> 
+   <td>businessUnitName</td> 
+   <td>String </td> 
+   <td>所属业务线名称 </td> 
+  </tr> 
+  <tr> 
+   <td>summary</td> 
+   <td>String </td> 
+   <td>概要</td> 
+  </tr> 
+  <tr> 
+   <td>thumbnail</td> 
+   <td>String </td> 
+   <td>缩略图url</td> 
+  </tr> 
+  <tr> 
+   <td>releaseDate</td> 
+   <td>String</td> 
+   <td>发布日期</td> 
+  </tr> 
+  <tr> 
+   <td>readQuantity</td> 
+   <td>Integer</td> 
+   <td>阅读量</td> 
+  </tr> 
+  <tr> 
+   <td>thumbQuantity</td> 
+   <td>Integer</td> 
+   <td>点赞量</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>404 </td> 
+   <td>NOT_FOUND</td> 
+   <td>没有找到内容 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_209455" class="sin_target">根据文章id获取文章</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>根据文章id获取一篇文章</p>
+<h4>请求路径</h4> 
+<pre><code>get /rest/art/{artId}
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>artId</td> 
+   <td>是</td> 
+   <td>Ingeger</td> 
+   <td>文章id</td> 
+   <td>无</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code": "200",
+    "message": "ok",
+    "data": {
+        "id": 1,
+        "businessUnitName": "海钓",
+        "title": "test",
+        "summary": "test",
+        "htmlFile": "test",
+        "releaseDate": "2017-07-28",
+        "readQuantity": 3,
+        "thumbQuantity": 1
+    }
+}
+</code></pre>
+<h4>返回字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>id </td> 
+   <td>Integer</td> 
+   <td>文章ID </td> 
+  </tr> 
+  <tr> 
+   <td>businessUnitName</td> 
+   <td>String </td> 
+   <td>所属业务线名称 </td> 
+  </tr> 
+  <tr> 
+   <td>releaseDate</td> 
+   <td>String</td> 
+   <td>发布日期</td> 
+  </tr> 
+  <tr> 
+   <td>readQuantity</td> 
+   <td>Integer</td> 
+   <td>阅读量</td> 
+  </tr> 
+  <tr> 
+   <td>thumbQuantity</td> 
+   <td>Integer</td> 
+   <td>点赞量</td> 
+  </tr> 
+  <tr> 
+   <td>htmlFile</td> 
+   <td>String </td> 
+   <td>正文url</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>404 </td> 
+   <td>NOT_FOUND</td> 
+   <td>没有找到内容 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_209460" class="sin_target">点赞一篇文章</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>点赞一篇文章</p>
+<h4>请求路径</h4> 
+<pre><code>post /rest/art/{artId}
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>是</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>artId</td> 
+   <td>是</td> 
+   <td>Integer</td> 
+   <td>文章id</td> 
+   <td>无</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code": "200",
+    "message": "ok",
+    "data": null
+}
+</code></pre>
+<h4>返回字段说明</h4>
+<p>| 参数名 | 类型 | 说明 |</p>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>404 </td> 
+   <td>NOT_FOUND</td> 
+   <td>没有找到内容 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																						<h3 id="text_209551" class="sin_target">根据业务id获取文章列表</h3>
+<div class="sin_text">
+    					<h4>接口描述</h4>
+<p>根据业务id获取文章</p>
+<h4>请求路径</h4> 
+<pre><code>get /rest/art/biz/{bizId}
+</code></pre>
+<h4>请求格式</h4> 
+<ul> 
+ <li>application/json</li> 
+</ul>
+<h4>是否需要登录</h4>
+<p>否</p>
+<h4>访问限制</h4>
+<p>暂无</p>
+<h4>请求字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>是否必选 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+  <th>默认值 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>bizId</td> 
+   <td>是</td> 
+   <td>integer</td> 
+   <td>业务id</td> 
+   <td>无</td> 
+  </tr> 
+  <tr> 
+   <td>pageNum</td> 
+   <td>否</td> 
+   <td>Integer</td> 
+   <td>当前页数</td> 
+   <td>1</td> 
+  </tr> 
+  <tr> 
+   <td>pageSize</td> 
+   <td>否</td> 
+   <td>Integer</td> 
+   <td>页大小</td> 
+   <td>10</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>返回结果</h4> 
+<pre><code>{
+    "code": "200",
+    "message": "ok",
+    "data": {
+        "total": 4,
+        "pageNum": 1,
+        "pageSize": 10,
+        "pages": 1,
+        "data": [
+            {
+                "id": 1,
+                "businessUnitName": "海钓",
+                "title": "test",
+                "summary": "test",
+                "thumbnail": "test",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 8
+            },
+            {
+                "id": 2,
+                "businessUnitName": "海钓",
+                "title": "title",
+                "summary": "概要",
+                "thumbnail": "缩略图",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            },
+            {
+                "id": 4,
+                "businessUnitName": "海钓",
+                "title": "haha",
+                "summary": "介绍一下",
+                "thumbnail": "http://www.youniwo.com",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            },
+            {
+                "id": 5,
+                "businessUnitName": "海钓",
+                "title": "haha",
+                "summary": "介绍一下",
+                "thumbnail": "http://www.youniwo.com",
+                "releaseDate": "2017-07-28",
+                "readQuantity": 4,
+                "thumbQuantity": 1
+            }
+        ]
+    }
+}
+</code></pre>
+<h4>返回字段说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>参数名 </th> 
+  <th>类型 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>total</td> 
+   <td>Long</td> 
+   <td>信息总条数</td> 
+  </tr> 
+  <tr> 
+   <td>pageNum</td> 
+   <td>Integer</td> 
+   <td>当前页</td> 
+  </tr> 
+  <tr> 
+   <td>pageSize</td> 
+   <td>Integer</td> 
+   <td>页大小</td> 
+  </tr> 
+  <tr> 
+   <td>pages</td> 
+   <td>Integer</td> 
+   <td>总页数</td> 
+  </tr> 
+  <tr> 
+   <td>id </td> 
+   <td>Integer</td> 
+   <td>文章ID </td> 
+  </tr> 
+  <tr> 
+   <td>businessUnitName</td> 
+   <td>String </td> 
+   <td>所属业务线名称 </td> 
+  </tr> 
+  <tr> 
+   <td>title</td> 
+   <td>String</td> 
+   <td>标题</td> 
+  </tr> 
+  <tr> 
+   <td>summary</td> 
+   <td>String</td> 
+   <td>概要</td> 
+  </tr> 
+  <tr> 
+   <td>releaseDate</td> 
+   <td>String</td> 
+   <td>发布日期</td> 
+  </tr> 
+  <tr> 
+   <td>readQuantity</td> 
+   <td>Integer</td> 
+   <td>阅读量</td> 
+  </tr> 
+  <tr> 
+   <td>thumbQuantity</td> 
+   <td>Integer</td> 
+   <td>点赞量</td> 
+  </tr> 
+ </tbody> 
+</table>
+<h4>错误码说明</h4> 
+<table>  
+ <tbody><tr> 
+  <th>错误代码 </th> 
+  <th>错误标识 </th> 
+  <th>说明 </th> 
+ </tr>  
+ </tbody><tbody> 
+  <tr> 
+   <td>404 </td> 
+   <td>NOT_FOUND</td> 
+   <td>没有找到内容 </td> 
+  </tr> 
+ </tbody> 
+</table>
+			</div>
+
+																														<h2 id="category_51408">产品</h2>
+																						
+					</div>
+		<div class="clear"></div>
+	</div>
+	<div id="bottom_begin"></div>
+	<div class="sin_footer">
+		<div>
+			Powered by <a href="http://www.oschina.net" target="_blank">开源中国</a>
+		</div>
+	</div>
+	<script>
+		//计算图片的真实大小，如果超过编辑区域，则进行限制
+		var resizePicWidth = function(pic_width){
+			var imgs = document.getElementsByTagName("img");
+            var j=0;
+			for(var i=0;i<imgs.length;i++){
+                var realWidth;	//真实的宽度
+                var realHeight;		//真实的高度
+                //这里做下说明，$("<img/>")这里是创建一个临时的img标签，类似js创建一个new Image()对象！
+				var newImg = new Image();
+				newImg.onload=function() {
+                    realWidth = imgs[j].width;
+                    realHeight = imgs[j].height;
+                    //如果真实的宽度大于规定的宽度就按照100%显示
+                    if(realWidth>=pic_width){
+						imgs[j].style.width=(pic_width) + "px";
+                    } else{//如果小于浏览器的宽度按照原尺寸显示
+						imgs[j].style.width=realWidth+'px';
+                    }
+                    j++;
+                }
+				newImg.src=imgs[j].src;
+			}
+
+		}
+		var currentNode = null;
+		window.onscroll=function(){
+            var h = document.getElementById("top_end").getBoundingClientRect().top;
+            if(h<=0){
+				document.getElementById("sin_navi_id").className='sin_navi sin_navi_nomove';
+				document.getElementById("sin_content_id").className='sin_content sin_content_mar';
+            }else{
+                document.getElementById("sin_navi_id").className='sin_navi';
+                document.getElementById("sin_content_id").className='sin_content';
+            }
+            comLayout();
+            var arr= new Array();
+            var index = 0;
+			var sinTargets = getClass("h2","sin_target");
+			for(var i=0;i<sinTargets.length;i++){
+                var th = sinTargets[i].getBoundingClientRect().top - 80;	                if(th<=0){
+                    arr[index] = new Array();
+                    arr[index][0] = sinTargets[i].getAttribute("id");
+                    arr[index][1] = th;
+                    index++;
+                }
+			}
+
+            var curr = bubbleSort(arr);
+            if(curr!=null && curr!=currentNode){
+				var oldCurrIds = getClass("li","sin_navi_current");
+                if(oldCurrIds && oldCurrIds[0]){
+                    var oid=oldCurrIds[0].getAttribute("id");
+                    document.getElementById(oid).className=" ";
+                }
+				document.getElementById("navi_"+curr).className="sin_navi_current";
+                currentNode = curr;
+            }
+        }
+		
+		
+	    window.onresize = function(){
+            comLayout();
+		}
+
+        var ch = document.getElementById("sin_navi_id").offsetHeight;
+
+	    function comLayout() {
+	        var h = document.documentElement.clientHeight;
+	    	if(ch<h){
+	    		return;
+	    	}
+		    var i = document.getElementById("bottom_begin").getBoundingClientRect().top;
+	        if(i<h){
+                document.getElementById("sin_navi_id").style.height=(i+"px");
+		   	}else{
+                document.getElementById("sin_navi_id").style.height=(h+"px");
+		   	}
+	    }
+	    
+	    function bubbleSort(arr){
+	    	var i= arr.length;
+	    	if(i<=0){
+	    		return null;
+	    	}
+	    	var j;
+			var tempExchangVal;
+			while(i>0){
+				for(j=0;j<i-1;j++){
+					if(arr[j][1] < arr[j+1][1]){
+						tempExchangVal=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=tempExchangVal;
+					}
+				}
+				i--;
+			}
+			return arr[0][0];
+		}
+	    comLayout();
+	    resizePicWidth(680);
+
+        function getClass(tagname, className) { //tagname指元素，className指class的值
+            //判断浏览器是否支持getElementsByClassName，如果支持就直接的用
+            if (document.getElementsByClassName) {
+                return document.getElementsByClassName(className);
+            }
+            else {    //当浏览器不支持getElementsByClassName的时候用下面的方法
+                var tagname = document.getElementsByTagName(tagname);  //获取指定元素
+                var tagnameAll = [];     //这个数组用于存储所有符合条件的元素
+                for (var i = 0; i < tagname.length; i++) {     //遍历获得的元素
+                    if (tagname[i].className == className) {     //如果获得的元素中的class的值等于指定的类名，就赋值给tagnameAll
+                        tagnameAll[tagnameAll.length] = tagname[i];
+                    }
+                }
+                return tagnameAll;
+            }
+        }
+	</script>
+</body>
+</html>	
+<!-- Generated by OsChina.NET (init:0[ms],page:82[ms],ip:113.119.68.56) -->

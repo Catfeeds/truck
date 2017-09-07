@@ -1,0 +1,39 @@
+
+{
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": [
+        {
+            "id": 1,
+            "spotName": "青澳湾海钓场",
+            "tempDay": "27℃",
+            "tempNight": "15℃",
+            "waveHeight": "1.2",
+            "weatherName": "小雨",
+            "weekDay": 2
+        },
+        {
+            "id": 25,
+            "spotName": "青澳湾海钓场",
+            "tempDay": "29℃",
+            "tempNight": "24℃",
+            "waveHeight": "1.4",
+            "weatherName": "中雨",
+            "weekDay": 2
+        },
+        {
+            "id": 14,
+            "spotName": "青澳湾海钓场2",
+            "tempDay": "27℃",
+            "tempNight": "15℃",
+            "waveHeight": "1.2",
+            "weatherName": "小雨",
+            "weekDay": 2
+        }
+    ],
+    "alertType": 0
+}
+

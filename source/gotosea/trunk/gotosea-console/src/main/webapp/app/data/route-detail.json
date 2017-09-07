@@ -1,0 +1,60 @@
+{
+    "code": null,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": {
+        "id": 1,
+        "name": "欢乐垂钓998",
+        "number": "GZ160727-01",
+        "duration": 7,
+        "isDelete": 1,
+        "cover": "attachment/2016/09/09/422efe628dbe4411b774efa2b48767a8.png",
+        "routeType": 1,
+        "wharfAddress": "XX市内环路江湾大桥南侧的大元帅府对面",
+        "tags": [
+            "路亚",
+            "岸钓",
+            "飞蝇钓"
+        ],
+        "fishSpots": [
+            {
+                "addr": "西丽湖水库",
+                "areaId": 1,
+                "charge": 0,
+                "grade": 2,
+                "id": 1,
+                "introduce": "粤海铁路南港码头防波堤：海鱼藏身的好地方，由于粤海铁路南港码头防波堤距离海口仅25公里左右，滨海大道一路向西即可到达，经常有海钓爱好者在此垂钓。",
+                "isFree": true,
+                "name": "西丽湖水库",
+                "type": 1
+            },
+            {
+                "addr": "XXX公园",
+                "areaId": 25,
+                "charge": 0,
+                "grade": 3,
+                "id": 2,
+                "introduce": "马村距离海口约40公里，其内部是一个大的淡水港湾，有丰富的饵料，这里的海底地形复杂，有砂岩地带、礁石等，港湾水较深。交通方面，由海口西站乘去马村港的小巴即可直接到达，自驾沿南海大道向西，过老城后继续向西即到。",
+                "isFree": true,
+                "name": "四海公",
+                "type": 2
+            },
+            {
+                "addr": "SSS水库",
+                "areaId": 14,
+                "charge": 0,
+                "grade": 4,
+                "id": 3,
+                "introduce": "东水港钓点距离海口约30公里，离马村港不远。东水港内部是一个大的淡水滩涂，有丰富的饵料，又是鱼儿的通道。",
+                "isFree": true,
+                "name": "青澳湾海钓场",
+                "type": 2
+            }
+        ]
+    },
+    "alertType": 0,
+    "alertMsg": null
+}

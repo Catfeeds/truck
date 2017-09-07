@@ -1,0 +1,3 @@
+@echo starting gotosea task...
+java -jar gotosea-task.jar
+pause

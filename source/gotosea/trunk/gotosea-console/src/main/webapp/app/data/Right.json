@@ -1,0 +1,836 @@
+
+{
+"version": "1.0",
+  "success": true,
+  "error": 0,
+  alertType:1,
+  "errorMessage": "正确",
+  "exceptionMessage": null,
+  "data":
+
+
+{
+
+"userInfo":{
+	"userName":"admin",
+	"nickName":"超级管理员",
+	"orgId":"admin",
+	"orgName":"修改测试",
+	"email":"",
+	"user.bossAccount":"admin"
+},
+
+"rights":
+[
+
+
+	   		{
+	   			"resId": "admin-login",
+	   			"resName": "后台管理登录",
+	   			
+	   			"groupName": "登录"
+	   		},
+
+	   		{
+	   			"resId": "admin-org",
+	   			"resName": "组织管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-org-create",
+	   			"resName": "组织管理-新增组织",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-org-delete",
+	   			"resName": "组织管理-删除组织",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-org-update",
+	   			"resName": "组织管理-修改组织",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgrole",
+	   			"resName": "组织角色管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgrole-create",
+	   			"resName": "组织角色管理-添加角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgrole-delete",
+	   			"resName": "组织角色管理-移出角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgtmnl",
+	   			"resName": "组织车辆管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgtmnl-create",
+	   			"resName": "组织车辆管理-添加车辆",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-orgtmnl-delete",
+	   			"resName": "组织车辆管理-移出车辆",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres",
+	   			"resName": "角色资源管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres-addres",
+	   			"resName": "角色资源管理-添加资源",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres-removeres",
+	   			"resName": "角色资源管理-移除资源",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres-reslist",
+	   			"resName": "角色资源管理-资源列表",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres-rolecreate",
+	   			"resName": "角色资源管理-新建角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-roleres-roleupdate",
+	   			"resName": "角色资源管理-修改角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-user",
+	   			"resName": "用户管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-user-create",
+	   			"resName": "用户管理-新增用户",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-user-force",
+	   			"resName": "用户管理-踢用户下线",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-user-update",
+	   			"resName": "用户管理-修改用户",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-userrole",
+	   			"resName": "用户角色管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-userrole-create",
+	   			"resName": "用户角色管理-添加角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-userrole-delete",
+	   			"resName": "用户角色管理-移出角色",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-usertmnl",
+	   			"resName": "用户车辆管理",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-usertmnl-create",
+	   			"resName": "用户车辆管理-添加车辆",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "admin-usertmnl-delete",
+	   			"resName": "用户车辆管理-移除车辆",
+	   			
+	   			"groupName": "后台管理"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-base-list",
+	   			"resName": "查询基本报警",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-base-send",
+	   			"resName": "发送基本报警",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-circle-delete",
+	   			"resName": "删除圆形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-circle-list",
+	   			"resName": "查询圆形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-circle-send",
+	   			"resName": "发送圆形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-polygon-delete",
+	   			"resName": "删除多边形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-polygon-list",
+	   			"resName": "查询多边形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-polygon-send",
+	   			"resName": "发送多边形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-rect-delete",
+	   			"resName": "删除矩形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-rect-list",
+	   			"resName": "查询矩形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-rect-send",
+	   			"resName": "发送矩形区域设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-route-delete",
+	   			"resName": "删除路线报警设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-route-list",
+	   			"resName": "查询路线报警设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "alarmset-route-send",
+	   			"resName": "发送路线报警设置",
+	   			
+	   			"groupName": "报警设置"
+	   		},
+
+	   		{
+	   			"resId": "area-create-circle",
+	   			"resName": "画圆形区域",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-create-polygon",
+	   			"resName": "画多边形区域",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-create-rect",
+	   			"resName": "画矩形区域",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-delete",
+	   			"resName": "区域删除",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-list",
+	   			"resName": "区域列表",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-tomap",
+	   			"resName": "显示到地图",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "area-update",
+	   			"resName": "区域修改",
+	   			
+	   			"groupName": "区域"
+	   		},
+
+	   		{
+	   			"resId": "dispatch-iodsend",
+	   			"resName": "信息点播下发",
+	   			
+	   			"groupName": "调度指令"
+	   		},
+
+	   		{
+	   			"resId": "dispatch-mutimedia",
+	   			"resName": "监听",
+	   			
+	   			"groupName": "调度指令"
+	   		},
+
+	   		{
+	   			"resId": "dispatch-question-send",
+	   			"resName": "提问下发",
+	   			
+	   			"groupName": "调度指令"
+	   		},
+
+	   		{
+	   			"resId": "dispatch-textsend-send",
+	   			"resName": "文本下发",
+	   			
+	   			"groupName": "调度指令"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-baseparam",
+	   			"resName": "基本信息",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-driver",
+	   			"resName": "驾驶员身份信息",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-overtimedriving",
+	   			"resName": "超时驾驶",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-position",
+	   			"resName": "位置信息",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-speed",
+	   			"resName": "行驶速度",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "drivingrecorder-suspectschart",
+	   			"resName": "疑点数据分析",
+	   			
+	   			"groupName": "行车记录仪"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-alarm",
+	   			"resName": "报警信息",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-event",
+	   			"resName": "事件报告",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-latelylocation",
+	   			"resName": "最近位置",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-log",
+	   			"resName": "日志栏",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-onoffline",
+	   			"resName": "车辆上下线",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-questionissue",
+	   			"resName": "提问下发",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "loginfo-textissue",
+	   			"resName": "文本下发",
+	   			
+	   			"groupName": "日志信息"
+	   		},
+
+	   		{
+	   			"resId": "mark-create",
+	   			"resName": "绘制标记",
+	   			
+	   			"groupName": "标记"
+	   		},
+
+	   		{
+	   			"resId": "mark-delete",
+	   			"resName": "标记删除",
+	   			
+	   			"groupName": "标记"
+	   		},
+
+	   		{
+	   			"resId": "mark-list",
+	   			"resName": "标记列表",
+	   			
+	   			"groupName": "标记"
+	   		},
+
+	   		{
+	   			"resId": "mark-tomap",
+	   			"resName": "显示到地图",
+	   			
+	   			"groupName": "标记"
+	   		},
+
+	   		{
+	   			"resId": "mark-update",
+	   			"resName": "标记修改",
+	   			
+	   			"groupName": "标记"
+	   		},
+
+	   		{
+	   			"resId": "monitor-login",
+	   			"resName": "前台监控登录",
+	   			
+	   			"groupName": "登录"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-browse",
+	   			"resName": "多媒体浏览",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-browse-delete",
+	   			"resName": "多媒体浏览删除",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-browse-print",
+	   			"resName": "多媒体浏览打印",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-browse-save",
+	   			"resName": "多媒体浏览保存",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-browse-upload",
+	   			"resName": "多媒体浏览上传",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-photo",
+	   			"resName": "多媒体拍照",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-photo-advset",
+	   			"resName": "多媒体拍照高级设置",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-photo-now",
+	   			"resName": "多媒体拍照实时上传",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "multimedia-photo-tmnlsave",
+	   			"resName": "多媒体拍照终端保存",
+	   			
+	   			"groupName": "多媒体"
+	   		},
+
+	   		{
+	   			"resId": "route-create",
+	   			"resName": "绘制路线",
+	   			
+	   			"groupName": "路线"
+	   		},
+
+	   		{
+	   			"resId": "route-delete",
+	   			"resName": "路线删除",
+	   			
+	   			"groupName": "路线"
+	   		},
+
+	   		{
+	   			"resId": "route-list",
+	   			"resName": "路线列表",
+	   			
+	   			"groupName": "路线"
+	   		},
+
+	   		{
+	   			"resId": "route-tomap",
+	   			"resName": "显示到地图",
+	   			
+	   			"groupName": "路线"
+	   		},
+
+	   		{
+	   			"resId": "route-update",
+	   			"resName": "路线修改",
+	   			
+	   			"groupName": "路线"
+	   		},
+
+	   		{
+	   			"resId": "setting-base-list",
+	   			"resName": "查询基本设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-base-send",
+	   			"resName": "发送基本设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-contacts-list",
+	   			"resName": "查询电话本设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-contacts-send",
+	   			"resName": "发送电话本设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-event-list",
+	   			"resName": "查询事件设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-event-send",
+	   			"resName": "发送事件设置",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-iod-list",
+	   			"resName": "查询信息点播",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "setting-iod-send",
+	   			"resName": "发送信息点播",
+	   			
+	   			"groupName": "参数设置"
+	   		},
+
+	   		{
+	   			"resId": "skin-black",
+	   			"resName": "皮肤黑",
+	   			
+	   			"groupName": "皮肤设置"
+	   		},
+
+	   		{
+	   			"resId": "skin-blue",
+	   			"resName": "皮肤蓝",
+	   			
+	   			"groupName": "皮肤设置"
+	   		},
+
+	   		{
+	   			"resId": "skin-green",
+	   			"resName": "皮肤绿",
+	   			
+	   			"groupName": "皮肤设置"
+	   		},
+
+	   		{
+	   			"resId": "skin-orange",
+	   			"resName": "皮肤橙",
+	   			
+	   			"groupName": "皮肤设置"
+	   		},
+
+	   		{
+	   			"resId": "sysset-alarm",
+	   			"resName": "报警设置",
+	   			
+	   			"groupName": "系统设置"
+	   		},
+
+	   		{
+	   			"resId": "sysset-safe",
+	   			"resName": "安全设置",
+	   			
+	   			"groupName": "系统设置"
+	   		},
+
+	   		{
+	   			"resId": "sysset-tmnl",
+	   			"resName": "车辆设置",
+	   			
+	   			"groupName": "系统设置"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-groupby-self",
+	   			"resName": "自定义分组",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-history",
+	   			"resName": "历史轨迹",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-info",
+	   			"resName": "车辆信息",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-location",
+	   			"resName": "车辆定位",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-offline-list",
+	   			"resName": "离线车辆列表",
+	   			
+	   			"groupName": "车辆在线离线"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-offline-list-excel",
+	   			"resName": "离线车辆列表导出",
+	   			
+	   			"groupName": "车辆在线离线"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-online-list",
+	   			"resName": "在线车辆列表",
+	   			
+	   			"groupName": "车辆在线离线"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-online-list-excel",
+	   			"resName": "在线车辆列表导出",
+	   			
+	   			"groupName": "车辆在线离线"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-recentlylocation",
+	   			"resName": "最近位置",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-recentlyvisit",
+	   			"resName": "最近访问",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-search",
+	   			"resName": "车辆搜索",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-searchcrossarea",
+	   			"resName": "跨域查车",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-searchtransports",
+	   			"resName": "运力分布",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-trace",
+	   			"resName": "车辆跟踪",
+	   			
+	   			"groupName": "车辆操作"
+	   		},
+
+	   		{
+	   			"resId": "tmnl-updatenickname",
+	   			"resName": "修改备注名称",
+	   			
+	   			"groupName": "车辆操作"
+	   		}
+
+
+]
+}
+
+}

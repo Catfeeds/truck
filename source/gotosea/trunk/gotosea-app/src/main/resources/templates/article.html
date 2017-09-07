@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>文章</title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta charset="UTF-8" />
+<script type="text/javascript" th:inline="javascript">
+	/*<![CDATA[*/
+	window.onload = function() {
+		var aImg = document.getElementsByTagName('img');
+		var oDark = document.getElementById('dark');
+		var bImg = oDark.getElementsByTagName('img')[0];
+		var oBody = document.getElementsByTagName('body')[0];
+		var length = aImg.length;
+		for (var i = 0; i < length; i++) {
+			aImg[i].onclick = function() {
+				oDark.style.display = 'block';
+				bImg.src = this.src;
+				bImg.style.marginTop = 0 - (bImg.height / 2) + 'px';
+			}
+		}
+		oDark.onclick = function() {
+			oDark.style.display = 'none';
+		}
+	}
+	/*]]>*/
+</script>
+
+<style>
+body {
+	color: #323232;
+	background: white;
+	padding: 15px;
+	margin: 0;
+	line-height:1.5;
+}
+
+#dark {
+	width: 100%;
+	height: 100%;
+	background: black;
+	display: none;
+	position: fixed;
+	opacity: 1;
+	top: 0px;
+	left: 0px;
+}
+
+h1,h2,h3,h4,h5,p {
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+}
+
+img {
+    width:100%;
+}
+
+#dark img {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+}
+
+br {
+	background: #f0f0f0
+}
+
+.title h2 {
+	font-size: 26px;
+	color:#323232;
+	font-weight:400;
+}
+
+.text .text_info {
+	line-height: 24px;
+}
+</style>
+</head>
+<body th:object="${article}" th:attr="artId=*{id}">
+	<!--标题-->
+	<div class="title">
+		<h2 th:text="*{title}"></h2>
+	</div>
+
+	<!--正文-->
+	<div class="text">
+		<!--正文信息-->
+		<div class="text_info">
+			<p style="color: #acacac; font-size: 16px">
+				<span>来自#<span th:text="*{businessUnitName}" />#
+				</span>&nbsp; <span th:text="*{releaseDate}"></span>&nbsp; <span>阅读:<span
+					th:text="*{readQuantity}"></span></span>
+			</p>
+		</div>
+		<!--正文内容-->
+		<div class="text_content">
+			<div th:utext="*{htmlFile}"></div>
+		</div>
+	</div>
+
+	<!--尾部-->
+	<div class="footer">
+		<p>本篇文章就到这啦,我们下期再见!</p>
+		<p style="text-align: center; color: #acacac;font-size:16px;margin-top:10px;">你的点赞是我最大的动力</p>
+		<div id="dark">
+			<img src="" />
+		</div>
+	</div>
+
+</body>
+
+</html>

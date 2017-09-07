@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.comm.dao.TActivityCustMapper" >
+    <select id="listPostByCustId" parameterType="string" resultType="TPost">
+        select * from t_post post LEFT JOIN t_activity_cust actcust ON actcust.activity_id = post.activity_id WHERE actcust.cust_id = #{custId}
+    </select>
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.order.mapper.OrderServeMapper" >
+
+	<select id="selecyOrderServePayedWithMerc" resultType="com.hyhl.gotosea.core.order.po.OrderServe">
+		SELECT os.*
+		FROM t_order_service os
+		INNER JOIN t_order o ON os.order_id=o.id AND o.activity_id IS NOT NULL
+		WHERE NOW() > DATE_ADD(o.status_time,INTERVAL 5 MINUTE) AND  DATE_ADD(o.status_time,INTERVAL 10 MINUTE) >= NOW()
+			   AND o.status=2 AND  os.service_type_id in (#{typeStr})
+	</select>
+
+	<!--<select id="selecyActOrderServePayedWithMerc" resultType="com.hyhl.gotosea.core.order.po.OrderServe">-->
+		<!--SELECT os.*-->
+		<!--FROM t_order_service os-->
+		<!--INNER JOIN t_order o ON os.order_id=o.id-->
+		<!--WHERE o.status=2 AND o.activity_id IS NULL AND  os.service_type_id in (#{typeStr})-->
+		<!--AND NOW() > DATE_ADD(o.status_time,INTERVAL 5 MINUTE) AND  DATE_ADD(o.status_time,INTERVAL 10 MINUTE) >= NOW()-->
+		<!--UNION-->
+		<!--SELECT os.*-->
+		<!--FROM t_order_service os-->
+		<!--INNER JOIN t_order o ON os.order_id=o.id-->
+		<!--WHERE o.status=2 AND o.activity_id IS NOT NULL AND  os.service_type_id in (#{typeStr})-->
+		<!--AND NOW() > DATE_ADD(o.status_time,INTERVAL 5 MINUTE) AND  DATE_ADD(o.status_time,INTERVAL 10 MINUTE) >= NOW()-->
+		<!--GROUP BY o.activity_id-->
+	<!--</select>-->
+</mapper>

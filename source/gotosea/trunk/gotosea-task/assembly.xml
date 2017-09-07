@@ -1,0 +1,51 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0"
+
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.0 http://maven.apache.org/xsd/assembly-1.1.0.xsd">
+
+    <id>assembly</id>
+    <formats>
+        <!-- 设置打包后的格式为zip -->
+        <format>zip</format>    
+    </formats>
+
+    <fileSets> <!-- 要打包的文件 -->
+        <fileSet> <!-- 根目录下的readme、license、notice文件 -->
+
+            <directory>${project.basedir}</directory>
+
+            <outputDirectory>/</outputDirectory>
+
+            <includes>
+
+                <include>README*</include>
+
+                <include>LICENSE*</include>
+
+                <include>NOTICE*</include>
+
+            </includes>
+
+        </fileSet>
+
+        <fileSet>
+            <!-- bin目录下的所有文件（批处理文件） -->
+
+            <directory>${project.basedir}/bin</directory>
+
+            <outputDirectory>/</outputDirectory>
+
+        </fileSet>
+
+    </fileSets>
+
+    <files>
+          <file>
+            <source>${project.build.directory}/${project.artifactId}-${project.version}.${project.packaging}</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>gotosea-task.jar</destName>
+          </file>
+        </files>
+
+</assembly>

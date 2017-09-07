@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>文章</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta charset="UTF-8"/>
+    <!--<script type="text/javascript" th:src="@{/js/jquery-3.2.1.min.js}"></script>-->
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        window.onload = function () {
+            var aImg = document.getElementsByTagName('img');
+            var oDark = document.getElementById('dark');
+            var bImg = oDark.getElementsByTagName('img')[0];
+            var oBody = document.getElementsByTagName('body')[0];
+            var length = aImg.length;
+            for (var i = 0; i < length; i++) {
+
+                aImg[i].onclick = function () {
+                    oDark.style.display = 'block';
+                    bImg.src = this.src;
+                    bImg.style.marginTop=0-(bImg.height/2)+'px';
+                }
+            }
+            oDark.onclick = function () {
+                oDark.style.display = 'none';
+            }
+        }
+        /*]]>*/
+
+    </script>
+
+    <style>
+
+        body{
+            /*position: relative;*/
+            font-size: 14px;color: #323232;
+            background: white;
+            padding: 15px;
+            margin: 0;
+        }
+
+        #dark{
+            width: 100%;
+            height: 100%;
+            background: black;
+            display:none;
+            position: fixed;
+            opacity: 1;
+            top: 0px;
+            left: 0px;
+        }
+
+        #dark img{
+            width: 100%;
+            vertical-align: middle;
+
+            position: absolute;
+            top: 50%;
+        }
+
+        br{background: #f0f0f0}
+
+        /*.footer .thumb{*/
+        /*font-size: 14px;*/
+        /*color: #34A5f0;*/
+        /*border: 1px #34A5f0 solid;*/
+        /*width: 30px;*/
+        /*height: 14px;*/
+        /*padding: 10px 36.5px 10px 36.5px;*/
+        /*line-height: 14px;*/
+        /*border-radius:6px;*/
+        /*margin: 0 auto;*/
+        /*margin-bottom: 50px;*/
+        /*}*/
+        /*.footer .thumb img{*/
+        /*width: 12px;*/
+        /*height: 11px;*/
+        /*padding-top: 1px;*/
+        /*margin-right: 4px;*/
+        /*float: left;*/
+        /*}*/
+        /*.footer .thumb_img img{*/
+        /*width: 12px;*/
+        /*height: 12px;*/
+        /*vertical-align: middle;*/
+        /*}*/
+
+        .title h2{
+            line-height: 21px;
+        }
+        .text .text_info{
+            line-height: 24px;
+        }
+    </style>
+</head>
+<body th:object="${article}" th:attr="artId=*{id}">
+<!--标题-->
+<div class="title">
+    <h2 th:text="*{title}"></h2>
+</div>
+
+<!--正文-->
+<div class="text">
+    <!--正文信息-->
+    <div class="text_info">
+        <p style="color: #acacac; font-size: 14px">
+            <span>来自#<span th:text="*{businessUnitName}"/>#</span>&nbsp;
+            <span th:text="*{releaseDate}"></span>&nbsp;
+            <span>阅读:<span th:text="*{readQuantity}"></span></span>
+        </p>
+    </div>
+
+
+
+    <!--正文内容-->
+    <div class="text_content">
+        <div th:utext="*{htmlFile}"></div>
+    </div>
+</div>
+
+<!--尾部-->
+<div class="footer">
+    <p>本篇文章就到这啦,我们下期再见!</p>
+    <p style="text-align:center; color: #acacac">你的点赞是我最大的动力</p>
+
+    <!--<div  class="thumb">-->
+    <!--<div class="thumb_img">-->
+    <!--<img src="/img/btn_dianzan_tab_s@3x.png"/>-->
+    <!--</div>-->
+    <!--赞-->
+    <!--</div>-->
+
+    <div id="dark">
+        <img src="" />
+    </div>
+</div>
+
+</body>
+
+</html>

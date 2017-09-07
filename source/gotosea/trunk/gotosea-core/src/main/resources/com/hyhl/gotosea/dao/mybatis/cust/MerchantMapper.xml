@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.MerchantMapper">
+
+    <select id="selectMerchantInfo" resultType="java.util.Map" >
+        SELECT cust_id AS custId,merchant,phone FROM t_merchant WHERE cust_id=#{custId}
+    </select>
+    
+    <select id="findMerchantDetails" resultMap="Map_MerchantDetails">
+	    SELECT
+			m.cust_id,
+			m.real_name,
+			m.id_type,
+			m.id_num,
+			m.id_picture1,
+			m.id_picture2,
+			m.merchant,
+			m.phone,
+			m.area_id,
+			m.locator_id,
+			m.address,
+			m.introduction,
+			m.picture,
+			m.thumbnail,
+			m.carousel_pics,
+			c.merchant_status,
+			ms.grade,
+			ms.order_count,
+			mt.tag_id
+		FROM
+			t_cust as c
+			INNER JOIN t_merchant as m ON m.cust_id=c.id
+			LEFT JOIN t_merchant_statistics as ms ON ms.cust_id=c.id
+			LEFT JOIN t_merchant_tag as mt ON mt.cust_id=c.id
+	    WHERE
+	    	c.id = #{custId}
+    </select>
+    
+    <resultMap type="com.hyhl.gotosea.core.cust.vo.MerchantDetailVO" id="Map_MerchantDetails" autoMapping="true">
+    	<id property="custId" column="cust_id"/>
+    	<collection property="tagIds" javaType="java.util.List" ofType="java.lang.Integer">
+    		<result column="tag_id"/>
+    	</collection>
+    </resultMap>
+
+    <select id="selectAreasWithMerchant" resultType="java.lang.Integer">
+        SELECT DISTINCT m.area_id
+        FROM t_merchant m
+        INNER JOIN t_cust c ON m.cust_id=c.id AND c.merchant_status=3
+    </select>
+
+    <select id="selectMerchants" resultType="com.hyhl.gotosea.core.cust.vo.MerchantsVo">
+        SELECT m.cust_id,m.address,m.thumbnail,m.merchant,ms.grade,ms.service_count
+        FROM t_merchant m
+        INNER JOIN t_cust c ON m.cust_id=c.id AND c.merchant_status=3
+        LEFT JOIN t_merchant_statistics as ms ON ms.cust_id=m.cust_id
+        <where>
+            <if test="param.areaStr!=null and param.areaStr!=''">
+              m.area_id IN (#{param.areaStr})
+            </if>
+            <if test="param.custIds!=null">
+              AND m.cust_id IN (#{param.custIds})
+            </if>
+        </where>
+    </select>
+</mapper>

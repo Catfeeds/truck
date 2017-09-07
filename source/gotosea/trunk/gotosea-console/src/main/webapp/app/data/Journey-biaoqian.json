@@ -1,0 +1,14 @@
+
+{
+"version": "1.0",
+  "success": true,
+  "error": 0,
+  alertType:1,
+  "errorMessage": "正确",
+  "exceptionMessage": null,
+  "data":[
+   	{"id":"222222","name":"旅游","tags":[{"id":34,"name":"海岛","value":2},{"id":2,"name":"海岛3","value":3}]},
+   	{"id":"11111111","name":"海钓","tags":[{"id":4,"name":"海岛33","value":52},{"id":3,"name":"海岛355","value":35},{"id":5,"name":"海岛876","value":35},{"id":3,"name":"海岛76","value":35}]}
+   ]
+
+}

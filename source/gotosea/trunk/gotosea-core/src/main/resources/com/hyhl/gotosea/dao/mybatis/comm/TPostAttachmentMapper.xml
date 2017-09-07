@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.comm.dao.TPostAttachmentMapper" >
+
+  <!--插入帖子附件-->
+  <insert id="insertPostAtchs" parameterType="PostAttachmentDto">
+    INSERT INTO t_post_attachment (post_id,attachment_type,thumbnail,original)
+    VALUES
+    <foreach collection="postAtchs" item="postAtch" separator="," >
+      (#{postAtch.postId},#{postAtch.attachmentType},#{postAtch.thumbnail},#{postAtch.original})
+    </foreach>
+  </insert>
+
+  <!--根据条件列举附件-->
+  <select id="listAtchByCond" parameterType="AttachmentCond" resultType="TPostAttachment">
+    SELECT * from t_post_attachment
+    <where>
+      <if test="postId!=null and postId!=0">
+        and post_id = #{postId}
+      </if>
+    </where>
+  </select>
+</mapper>

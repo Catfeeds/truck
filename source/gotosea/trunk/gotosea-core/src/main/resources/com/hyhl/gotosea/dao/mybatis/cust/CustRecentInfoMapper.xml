@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.CustRecentInfoMapper">
+	
+	 <update id="updateCustRecentInfo">
+	 	update t_cust_recent_info
+	 	set
+	 		login_ip = #{ip},
+	 		login_time = #{time},
+	 		login_num = login_num+1
+	 	where
+	 		cust_id = #{custId}
+	 </update>
+	
+</mapper>

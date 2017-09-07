@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.comm.dao.TActivityServiceMapper" >
+
+  <insert id="insertActService" parameterType="ActivityServiceDto" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO t_activity_service (activity_id,service_id,activity_service_type,seq)
+    VALUES
+    <foreach collection="list" item="actService" separator="," >
+      (#{actService.activityId},#{actService.serviceId},#{actService.activityServiceType},#{actService.seq})
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,35 @@
+.login-viewport{
+	background-color: #FFF;
+}
+
+.login-north ,.login-south{
+	background:transparent;
+}
+
+.login-logo {
+    /*background: url(images/login.jpg) no-repeat;*/
+    background: url(images/logo03.png) no-repeat;
+    width: 284px;
+    height: 50px;
+}
+.login-center{
+	background-color: #053374;
+}
+
+.login-center-body{
+	background: url(images/login.jpg) no-repeat;
+	background-position:center;
+}
+
+.login-form{
+	padding:50px 40px;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	-ms-border-radius:5px;
+	-o-border-radius:5px;
+	border-radius:5px;
+}
+
+
+
+

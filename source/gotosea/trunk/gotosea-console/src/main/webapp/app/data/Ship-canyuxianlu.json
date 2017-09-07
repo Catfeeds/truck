@@ -1,0 +1,58 @@
+  "code": null,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": {
+        "currentPage": 1,
+        "pageData": [
+            {
+                "creator": "土豪君01",
+                "id": 1,
+                "name": "欢乐垂钓998",
+                "number": "GZ160727-01",
+                "routeNo": null,
+                "routeType": 1,
+                "wharfAddress": "XX市内环路江湾大桥南侧的大元帅府对面",
+                "wharfName": "大元帅府码头"
+            },
+            {
+                "creator": null,
+                "id": 2,
+                "name": "开心垂钓518",
+                "number": "SZ160727-02",
+                "routeNo": null,
+                "routeType": null,
+                "wharfAddress": "广州市海珠区滨江路中大北门",
+                "wharfName": "中大码头"
+            },
+            {
+                "creator": null,
+                "id": 3,
+                "name": "天天垂钓888",
+                "number": "ST160727-03",
+                "routeNo": null,
+                "routeType": null,
+                "wharfAddress": "XX大桥南边桥脚东侧",
+                "wharfName": "广州塔码头"
+            },
+            {
+                "creator": null,
+                "id": 6,
+                "name": "大大海钓128",
+                "number": "ZH160727-04",
+                "routeNo": null,
+                "routeType": null,
+                "wharfAddress": "XX市珠江夜游",
+                "wharfName": "天字码头"
+            }
+        ],
+        "pageSize": 12,
+        "startRow": 0,
+        "totalPages": 1,
+        "totalRows": 4
+    },
+    "alertType": 0,
+    "alertMsg": null
+}

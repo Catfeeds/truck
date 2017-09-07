@@ -1,0 +1,33 @@
+{
+    "code": null,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": {
+        "currentPage": 1,
+        "pageData": [
+            {
+                "duration": 7,
+                "jourNo": "6666",
+                "jourState": "发布中"
+            },
+            {
+                "departureTime": "2016-08-31 00:00",
+                "duration": 7,
+                "jourState": "发布中"
+            },
+            {
+                "duration": 7,
+                "jourState": "待开始"
+            }
+        ],
+        "pageSize": 12,
+        "startRow": 0,
+        "totalPages": 1,
+        "totalRows": 3
+    },
+    "alertType": 0,
+    "alertMsg": null
+}

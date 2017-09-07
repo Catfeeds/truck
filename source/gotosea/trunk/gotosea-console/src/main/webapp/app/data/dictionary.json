@@ -1,0 +1,341 @@
+{
+    "code": 0,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": [
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 1,
+            "typeDesc": "用户性别",
+            "typeName": "user_sex"
+        },
+        {
+            "childs": null,
+            "curMax": 7,
+            "id": 4,
+            "typeDesc": "行程状态",
+            "typeName": "journey_state"
+        },
+        {
+            "childs": null,
+            "curMax": 31,
+            "id": 9,
+            "typeDesc": "线路类型",
+            "typeName": "route_type"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 11,
+            "typeDesc": "行程发起类型",
+            "typeName": "journey_pattern"
+        },
+        {
+            "childs": null,
+            "curMax": 5,
+            "id": 13,
+            "typeDesc": "订单状态",
+            "typeName": "order_status"
+        },
+        {
+            "childs": null,
+            "curMax": 8,
+            "id": 16,
+            "typeDesc": "船舶标签",
+            "typeName": "ship_tag"
+        },
+        {
+            "childs": null,
+            "curMax": 4,
+            "id": 32,
+            "typeDesc": "船舶类型",
+            "typeName": "ship_type"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 40,
+            "typeDesc": "用户认证状态",
+            "typeName": "auth_status"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 49,
+            "typeDesc": "船家订单状态",
+            "typeName": "ship_order_state"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 51,
+            "typeDesc": "船员证书类型",
+            "typeName": "certificate_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 53,
+            "typeDesc": "表示可用或不可用",
+            "typeName": "status"
+        },
+        {
+            "childs": null,
+            "curMax": 10,
+            "id": 55,
+            "typeDesc": "cc",
+            "typeName": "test1"
+        },
+        {
+            "childs": null,
+            "curMax": 14,
+            "id": 67,
+            "typeDesc": "行程参与人状态",
+            "typeName": "journey_user_state"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 78,
+            "typeDesc": "线路费用类型",
+            "typeName": "route_fee_type"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 81,
+            "typeDesc": "账单二级类型",
+            "typeName": "bill_second_type"
+        },
+        {
+            "childs": null,
+            "curMax": 19,
+            "id": 85,
+            "typeDesc": "银行类别",
+            "typeName": "bank_kind"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 105,
+            "typeDesc": "船舶订单接单方式",
+            "typeName": "ship_order_model"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 107,
+            "typeDesc": "账单一级类型",
+            "typeName": "bill_type"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 109,
+            "typeDesc": "账单状态",
+            "typeName": "bill_valid"
+        },
+        {
+            "childs": null,
+            "curMax": 5,
+            "id": 113,
+            "typeDesc": "线路频道",
+            "typeName": "route_channel"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 120,
+            "typeDesc": "审核结果",
+            "typeName": "audit_result"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 122,
+            "typeDesc": "船家类型",
+            "typeName": "boat_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 124,
+            "typeDesc": "船家认证审核",
+            "typeName": "boat_auth_status"
+        },
+        {
+            "childs": null,
+            "curMax": 9,
+            "id": 126,
+            "typeDesc": "模板类型",
+            "typeName": "notify_template_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 130,
+            "typeDesc": "银行卡卡种",
+            "typeName": "card_kind"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 158,
+            "typeDesc": "评价类型",
+            "typeName": "evaluate_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 161,
+            "typeDesc": "投诉类型",
+            "typeName": "complaint_type"
+        },
+        {
+            "childs": null,
+            "curMax": 7,
+            "id": 166,
+            "typeDesc": "优惠券模板类型",
+            "typeName": "coupon_template_type"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 173,
+            "typeDesc": "优惠券模板状态",
+            "typeName": "coupon_template_state"
+        },
+        {
+            "childs": null,
+            "curMax": 34,
+            "id": 184,
+            "typeDesc": "近岸海区",
+            "typeName": "coastalsea_code"
+        },
+        {
+            "childs": null,
+            "curMax": 18,
+            "id": 218,
+            "typeDesc": "沿海海区",
+            "typeName": "offshore_code"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 245,
+            "typeDesc": "是否有效",
+            "typeName": "is_valid"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 247,
+            "typeDesc": "附加项目类型",
+            "typeName": "addition_item_type"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 255,
+            "typeDesc": "支付渠道",
+            "typeName": "pay_channel"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 257,
+            "typeDesc": "长度单位",
+            "typeName": "leng_unit"
+        },
+        {
+            "childs": null,
+            "curMax": 4,
+            "id": 262,
+            "typeDesc": "线路入口",
+            "typeName": "route_from_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 264,
+            "typeDesc": "是否",
+            "typeName": "yes_or_no"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 266,
+            "typeDesc": "附加项目状态",
+            "typeName": "addition_status"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 272,
+            "typeDesc": "结果",
+            "typeName": "result"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 274,
+            "typeDesc": "线路套餐状态",
+            "typeName": "route_ship_state"
+        },
+        {
+            "childs": null,
+            "curMax": 3,
+            "id": 280,
+            "typeDesc": "优惠券类型",
+            "typeName": "coupon_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 284,
+            "typeDesc": "记账类型",
+            "typeName": "tally_type"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 286,
+            "typeDesc": "记账状态",
+            "typeName": "tally_state"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 288,
+            "typeDesc": "记账统计状态",
+            "typeName": "tally_statistics_state"
+        },
+        {
+            "childs": null,
+            "curMax": 1,
+            "id": 290,
+            "typeDesc": "船家证书认证状态",
+            "typeName": "certificate_status"
+        },
+        {
+            "childs": null,
+            "curMax": 2,
+            "id": 292,
+            "typeDesc": "价格类型",
+            "typeName": "price_type"
+        },
+        {
+            "childs": null,
+            "curMax": 0,
+            "id": 305,
+            "typeDesc": "tessss1",
+            "typeName": "bb"
+        }
+    ],
+    "alertType": 0,
+    "alertMsg": null
+}

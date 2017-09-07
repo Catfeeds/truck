@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.MerchantStatisticsMapper">
+	
+	<update id="updateMerchantOrder">
+		UPDATE 
+			t_merchant_statistics
+		SET 
+			order_count=order_count+1
+		WHERE 
+			cust_id=#{custId};
+	</update>
+	
+	<update id="updateMerchantGradeCount">
+		UPDATE 
+			t_merchant_statistics
+		SET 
+			grade_num=grade_num+1, grade_count=grade_count+#{grade}
+		WHERE 
+			cust_id=#{custId};
+	</update>
+	
+	<update id="updateMerchantGrade">
+		UPDATE 
+			t_merchant_statistics
+		SET 
+			grade=(grade_count*10/grade_num)
+		WHERE 
+			cust_id=#{custId};
+	</update>
+</mapper>

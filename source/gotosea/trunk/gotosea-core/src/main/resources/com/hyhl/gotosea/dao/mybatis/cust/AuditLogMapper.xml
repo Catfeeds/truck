@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.AuditLogMapper" >
+	<select id="findMerchantAudits" resultType="com.hyhl.gotosea.core.cust.vo.AuditLogVO">
+		SELECT
+			a.id,
+			a.audit_object_id,
+			a.audit_type,
+			a.`status`,
+			a.apply_remark,
+			a.audit_remark,
+			a.apply_time,
+			a.audit_time,
+			m.real_name,
+			m.phone,
+			m.id_num
+		FROM
+			t_audit_log AS a
+		INNER JOIN t_merchant m ON m.cust_id=a.audit_object_id
+		WHERE
+			a.audit_type=#{auditType}
+		ORDER BY a.status ASC,apply_time DESC
+	</select>
+</mapper>

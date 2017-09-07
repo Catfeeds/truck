@@ -1,0 +1,15 @@
+#linux
+
+1.将gotoseaserv复制到/etc/init.d/下
+
+2.赋予当前用户可执行权限
+sudo chmod +x /etc/init.d/gotoseaserv
+
+3.启用服务
+sudo service gotoseaserv start
+
+4.停止服务
+sudo service gotoseaserv stop
+
+5.重启服务
+sudo service gotoseaserv restart

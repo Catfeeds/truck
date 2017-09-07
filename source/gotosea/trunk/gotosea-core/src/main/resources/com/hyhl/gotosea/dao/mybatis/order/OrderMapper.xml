@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.order.mapper.OrderMapper" >
+    
+   <select id="selectOrderCustCoupons" resultType="com.hyhl.gotosea.core.order.po.CustCoupon">
+	   SELECT cc.*
+	   FROM t_order t
+	   INNER JOIN t_coupon_use_log cul ON t.id=cul.order_id
+	   INNER JOIN t_cust_coupon cc ON cc.id=cul.cust_coupon_id
+	   WHERE t.id=#{orderId}
+   </select>
+	
+	<select id="selectAllCustOrder" resultType="com.hyhl.gotosea.core.order.vo.AllCustOrder">
+		SELECT o.id,o.order_no,o.create_time,o.pay_fee,o.status,os.name,os.service_type_id,os.service_date
+		FROM t_order o
+		INNER JOIN t_order_service os ON os.order_id=o.id
+		<where>
+			<if test="param.status!=null">
+				o.status=#{param.status}
+			</if>
+			<if test="param.orderNo!=null and param.orderNo!=''">
+				AND o.order_no LIKE concat('%',#{param.orderNo},'%')
+			</if>
+		</where>
+	</select>
+
+	<resultMap id="custOrderDetail" type="com.hyhl.gotosea.core.order.vo.CustOrderDetail" autoMapping="true">
+		<id column="id" property="id"/>
+		<collection property="travelers" ofType="java.lang.Integer">
+			<result column="ot.traveler_id"/>
+		</collection>
+	</resultMap>
+
+	<select id="selectCustOrderDetail" resultMap="custOrderDetail">
+		SELECT o.id,o.order_no,o.create_time,o.pay_fee,o.prefer_price,o.travelers_num,o.cust_id AS cust,
+			 o.contacter,o.contacter_phone,o.contacter_remark,o.status,
+			 os.name,os.service_type_id,os.service_date,os.service_num,ot.traveler_id,mo.cust_id AS merchant
+		FROM t_order o
+		INNER JOIN t_order_service os ON os.order_id=o.id
+		INNER JOIN t_order_travelers ot ON ot.order_id=o.id
+		LEFT JOIN t_merchant_order mo ON mo.order_service_id=os.id
+		WHERE o.id=#{id}
+	</select>
+
+	<resultMap id="perOrderDetail" type="com.hyhl.gotosea.core.order.vo.PerOrderDetail" autoMapping="true">
+		<id column="id" property="id"/>
+		<collection property="travelers" ofType="java.lang.Integer">
+			<result column="ot.traveler_id"/>
+		</collection>
+	</resultMap>
+
+	<select id="selectPerOrderDetail" resultMap="perOrderDetail">
+		SELECT o.id,o.sign,o.create_time,o.prefer_price,o.pay_fee,o.contacter,o.activity_id,o.contacter_phone,o.departure_time,
+			o.contacter_remark,o.order_no,o.remark,os.service_num,os.service_id AS serveId,ot.traveler_id
+		FROM t_order o
+		INNER JOIN t_order_service os ON o.id=os.order_id
+		LEFT JOIN t_order_travelers ot ON ot.order_id=o.id
+		WHERE o.id=#{id}
+	</select>
+
+	<select id="selectPerOrderList" resultType="com.hyhl.gotosea.core.order.vo.PerOrders">
+		SELECT o.id,o.travelers_num,o.departure_time,o.order_type,o.order_no,o.remark,o.status,o.sign,o.pay_fee,os.service_type_id
+		FROM t_order o
+		INNER JOIN t_order_service os ON o.id=os.order_id
+		<where>
+			o.cust_id=#{custId}
+			<if test="status!=null and status.length>0">
+				AND o.status IN  <foreach collection="status" item="s" open="(" separator="," close=")">#{s}</foreach>
+			</if>
+		</where>
+		ORDER BY o.create_time DESC,o.status
+	</select>
+
+	<select id="selectPersonOrderCount" resultType="com.hyhl.gotosea.core.order.vo.OrderCount">
+		SELECT SUM(CASE status WHEN 1 THEN 1 ELSE 0 END) AS toPay,SUM(CASE WHEN status in (2,3) THEN 1 ELSE 0 END) AS toGo,
+			 SUM(CASE status WHEN 4 THEN 1 ELSE 0 END) AS toEva,SUM(CASE WHEN status in (6,7,8) THEN 1 ELSE 0 END) AS refund
+		FROM t_order o
+		WHERE o.cust_id=#{custId}
+	</select>
+
+</mapper>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.local.mapper.AreaMapper" >
+
+    <resultMap id="LinkageArea" type="com.hyhl.gotosea.core.local.vo.AreaVo" autoMapping="true">
+        <id property="areaId" column="area_id"/>
+        <collection property="children" ofType="com.hyhl.gotosea.core.local.vo.AreaVo">
+            <id property="areaId" column="area_id1"/>
+            <result property="areaName" column="area_name1"/>
+            <collection property="children" ofType="com.hyhl.gotosea.core.local.vo.AreaVo">
+                <id property="areaId" column="area_id2"/>
+                <result property="areaName" column="area_name2"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="selectLinkageArea" resultMap="LinkageArea">
+        SELECT a.area_id,a.area_name,a1.area_id AS area_id1,a1.area_name AS area_name1,
+                a2.area_id AS area_id2,a2.area_name AS area_name2
+        FROM t_area a
+        LEFT JOIN t_area a1 ON a.area_id=a1.p_area_id
+        LEFT JOIN t_area a2 ON a1.area_id=a2.p_area_id
+        WHERE a.level=1
+    </select>
+    
+    <select id="selectAreaLevelIn3" resultType="com.hyhl.gotosea.core.local.vo.AreaVo">
+        SELECT a.area_id,CONCAT(a2.area_name,a1.area_name,a.area_name) AS area_name
+        FROM t_area a
+        INNER JOIN t_area a1 ON a1.area_id=a.p_area_id
+        INNER JOIN t_area a2 ON a2.area_id=a1.p_area_id
+        WHERE a.`level`=3
+    </select>
+    
+     <select id="selectAreaAll" resultType="com.hyhl.gotosea.core.local.vo.AreaVo">
+       SELECT
+			a.area_id,CONCAT_WS('-',a2.area_name,a1.area_name,a.area_name) AS area_name
+		FROM
+			t_area a
+		LEFT JOIN t_area a1 ON a1.area_id = a.p_area_id
+		LEFT JOIN t_area a2 ON a2.area_id = a1.p_area_id
+    </select>
+    
+
+    <select id="selectAreaIdsByPAreaId" resultType="java.lang.Integer">
+        SELECT a.area_id FROM t_area a WHERE a.`level`=3 AND a.p_area_id in (#{pAreaStr});
+    </select>
+
+    <resultMap id="usedAreas" type="com.hyhl.gotosea.core.local.vo.AreaVo" autoMapping="true">
+        <id property="areaId" column="area_id"/>
+        <collection property="children" ofType="com.hyhl.gotosea.core.local.vo.AreaVo">
+            <id property="areaId" column="aarea_id"/>
+            <result property="areaName" column="aarea_name"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAreas" resultMap="usedAreas">
+        SELECT a.area_id,a.area_name,a1.area_id AS aarea_id,a1.area_name AS aarea_name
+        FROM t_area a
+        INNER JOIN t_area a1 ON a.area_id=a1.p_area_id AND a1.`level`=2
+        INNER JOIN t_area a2 ON a1.area_id=a2.p_area_id AND a2.`level`=3 AND a2.area_id in (#{areaStr})
+        WHERE a.`level`=1
+    </select>
+    
+    <select id="findCustAreaByAreaId" parameterType="int" resultType="String">
+    	SELECT
+			CONCAT_WS("-",a.area_name,t.area_name)
+		FROM
+			t_area t
+			LEFT JOIN t_area a ON a.area_id=t.p_area_id
+		WHERE
+			t.area_id=#{areaId}
+    </select>
+</mapper>

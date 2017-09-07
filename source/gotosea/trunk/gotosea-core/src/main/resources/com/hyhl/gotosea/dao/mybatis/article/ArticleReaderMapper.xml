@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.article.dao.ArticleReaderMapper">
+
+	<!--获取所有文章-->
+	<update id="readArticle">
+		insert INTO t_article_reader(cust_id,article_id,read_time) VALUES (#{custId},#{artId},now())
+	</update>
+
+</mapper>

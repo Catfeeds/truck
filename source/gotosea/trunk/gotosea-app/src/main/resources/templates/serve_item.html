@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"></meta>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"></meta>
+<title></title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#rolw_info {
+	position: relative;
+}
+
+#rolw_info h2 {
+	font-size: 16px;
+	height: 60px;
+	line-height: 60px;
+	width: 80%;
+	padding: 0 10%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	position: relative;
+}
+
+#rolw_info p span {
+	font-size: 14px;
+	line-height: 8px;
+}
+
+.bgh {
+	background-color: rgba(251, 251, 251, 1)
+}
+
+#rolw_info .br_box {
+	background: rgba(240, 240, 240, 1);
+	height: 10px;
+}
+
+#rolw_info_left {
+	width: 1px;
+	height: 370px;
+	position: absolute;
+	background: #ACACB4;
+	top: 86px;
+	left: 5%;
+}
+
+.mui-icon {
+	width: 20px;
+	height: 20px;
+	background: rgba(144, 168, 251, 1);
+	position: absolute;
+	border-radius: 50%;
+	left: 2.6%;
+	top: 40%;
+}
+
+.mui-icon_top {
+	width: 3px;
+	height: 20px;
+	left: 5%;
+	position: absolute;
+	background: rgba(53, 165, 239, 1);
+}
+
+.item_content {
+    padding:20px;
+}
+</style>
+</head>
+
+<body>
+	<div id="rolw_info" th:each="item : ${items}">
+		<div class="br_box"></div>
+		<h2 style="height: 40px; line-height: 40px; font-weight: 400;">
+			<span class="mui-icon_top" style="top: 26%;"></span><span
+				th:text="${item.itemName}"></span>
+		</h2>
+		<div class="br_box"></div>
+		<div class="item_content" >
+		    <p th:utext="${item.itemContent}"></p>
+		</div>
+	</div>
+</body>
+
+</html>

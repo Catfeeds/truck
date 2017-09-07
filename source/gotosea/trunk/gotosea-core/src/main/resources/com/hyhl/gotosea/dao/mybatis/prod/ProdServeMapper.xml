@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.prod.mapper.ProdServeMapper" >
+
+    <select id="selectProdServes" resultType="com.hyhl.gotosea.core.prod.vo.ConsoleServesList">
+        SELECT s.id,s.code,s.name,s.create_time,s.status,s.service_type_id AS type
+        FROM t_service s
+        --         INNER JOIN t_service_type ste ON ste.id=s.service_type_id
+        <if test="param.themId!=null">
+            INNER JOIN t_service_theme tst ON tst.service_id=s.id
+        </if>
+        <where>
+            <if test="param.type!=null and param.type.length>0">
+                s.service_type_id IN
+                <foreach collection="param.type" open="(" close=")" separator="," item="t">
+                    #{t}
+                </foreach>
+            </if>
+            <if test="param.name!=null and param.name!=''">
+                AND s.name LIKE concat('%',#{param.name},'%')
+            </if>
+            <if test="param.themId!=null">
+              AND tst.theme_id=#{param.themId}
+            </if>
+        </where>
+        ORDER BY s.create_time DESC
+    </select>
+
+    <select id="selectServeFishingPoint" resultType="com.hyhl.gotosea.core.prod.vo.FishingPoint">
+        SELECT pr.id,pr.name,pr.locator_id,spr.prefer_price AS preferPrice
+        FROM t_service s
+        LEFT JOIN t_service_pub_resource spr ON s.id=spr.service_id
+        INNER JOIN t_pub_resource pr ON pr.id=spr.pub_resource_id AND pr.pub_resource_type_id=1002
+        WHERE s.id=#{serveId}
+    </select>
+
+    <select id="selectAreasWithServe" resultType="java.lang.Integer">
+        SELECT DISTINCT area_id FROM t_service WHERE STATUS=1
+    </select>
+
+    <resultMap type="com.hyhl.gotosea.core.prod.vo.AppServesList" id="serviceList" autoMapping="true">
+        <id column="id" property="id"/>
+        <collection property="tags" ofType="java.lang.Integer" >
+            <result column="tag_id" ></result>
+        </collection>
+    </resultMap>
+
+    <select id="selectServes" resultMap="serviceList">
+        SELECT s.id,s.picture AS thumbnail,s.name,s.price,s.sold_num,s.service_type_id AS type,pr.name as destination,ste.category,st.tag_id
+        FROM t_service s
+        INNER JOIN t_service_type ste ON ste.id=s.service_type_id
+        LEFT JOIN t_service_tag st ON st.service_id=s.id
+        LEFT JOIN t_service_pub_resource spr ON spr.service_id=s.id
+        LEFT JOIN t_pub_resource pr ON pr.id=spr.pub_resource_id AND pr.pub_resource_type_id=1001 AND ste.category=2
+        <if test="param.isHot()">
+        INNER JOIN t_service_theme tst ON tst.service_id=s.id
+        INNER JOIN t_theme t ON tst.theme_id=t.id
+        </if>
+        <where>
+            s.status=1
+            <if test="param.word!=null and param.word!=''">
+                AND pr.name LIKE concat('%',#{param.word},'%')
+            </if>
+            <if test="param.type!=null">
+                AND s.service_type_id=#{param.type}
+            </if>
+            <if test="param.category!=null">
+                AND ste.category=#{param.category}
+            </if>
+            <if test="param.areaStr!=null and param.areaStr!=''">
+                AND s.area_id IN (#{param.areaStr})
+            </if>
+            <if test="param.ids!=null and param.ids.size()>0">
+                AND s.id IN
+                <foreach collection="param.ids" open="(" separator="," close=")" item="id">#{id}</foreach>
+            </if>
+        </where>
+        ORDER BY
+        <choose>
+            <when test="null==param.orderType or param.orderType==0">
+                s.id DESC,
+            </when>
+            <when test="param.orderType==1">
+                s.grade DESC,
+            </when>
+            <when test="param.orderType==2">
+                s.sold_num DESC,
+            </when>
+        </choose>
+            pr.id DESC
+    </select>
+
+    <select id="selectServesByThemeId" resultType="com.hyhl.gotosea.core.prod.vo.AppThemeServes">
+        SELECT s.id,s.picture,s.name,s.price,s.service_type_id
+        FROM t_theme t
+        INNER JOIN t_service_theme tst ON tst.theme_id=t.id
+        INNER JOIN t_service s ON tst.service_id=s.id
+        WHERE s.status=1 AND t.id=#{themeId}
+    </select>
+
+    <resultMap id="islandDetail" type="com.hyhl.gotosea.core.prod.vo.IslandDetail" autoMapping="true">
+        <id property="id" column="id"/>
+        <collection property="tags" ofType="java.lang.Integer" >
+            <result column="tag_id" ></result>
+        </collection>
+    </resultMap>
+
+    <select id="getIslandDetail" resultMap="islandDetail">
+        SELECT s.id,s.name,s.price,s.sold_num,s.grade,s.coupon,s.insurance,s.redeem,s.recommend,s.advance_days,s.picture,s.prefer_price,
+                s.carousel_pics,s.fish_point_pic,pr.name as destination,ste.category,st.tag_id
+        FROM t_service s
+		INNER JOIN t_service_type ste ON ste.id=s.service_type_id
+		LEFT JOIN t_service_pub_resource spr ON spr.service_id=s.id
+        LEFT JOIN t_pub_resource pr ON pr.id=spr.pub_resource_id AND pr.pub_resource_type_id=1001 AND ste.category=2
+        LEFT JOIN t_service_tag st ON st.service_id=s.id
+        WHERE s.id=#{id}
+        ORDER BY pr.id DESC
+    </select>
+
+    <resultMap id="charterDetail" type="com.hyhl.gotosea.core.prod.vo.CharterDetail" autoMapping="true">
+        <id property="id" column="id"/>
+        <collection property="tags" ofType="java.lang.Integer" >
+            <result column="tag_id" ></result>
+        </collection>
+    </resultMap>
+
+    <select id="getCharterDetail" resultMap="charterDetail">
+        SELECT s.id,s.name,s.price,s.grade,s.coupon,s.insurance,s.redeem,s.recommend,s.advance_days,s.fish_point_pic,s.prefer_price,
+                s.area_id,s.cust_id AS merchant,s.max_persons,ste.category,s.carousel_pics,st.tag_id
+        FROM t_service s
+		INNER JOIN t_service_type ste ON ste.id=s.service_type_id
+        LEFT JOIN t_service_tag st ON st.service_id=s.id
+        WHERE s.id=#{id}
+    </select>
+
+    <select id="selectSalePlans" resultType="com.hyhl.gotosea.core.prod.vo.SalePlanVo">
+        SELECT sap.id,sap.offer_date,sap.prefer_price
+        FROM t_service_sales_plan sap
+        INNER JOIN t_service s ON s.id=sap.service_id
+        WHERE DATE_ADD(#{future},INTERVAL s.advance_days DAY) >sap.offer_date
+        AND sap.offer_date>=DATE_ADD(curdate(),INTERVAL s.advance_days DAY)
+        AND sap.service_id=#{id}
+        ORDER BY sap.offer_date
+    </select>
+
+    <select id="getTagIdByServiceId" resultType="integer">
+        SELECT tag_id from t_service_tag WHERE id = #{serviceId}
+    </select>
+
+    <select id="listServeByCond" parameterType="ProdServeCond" resultType="ProdServe">
+        SELECT * from t_service
+        <where>
+            <if test="pubResourceId!=null">
+                and id in (SELECT service_id FROM t_service_pub_resource WHERE pub_resource_id = #{pubResourceId})
+            </if>
+            <if test="beginDate!=null">
+                and #{beginDate} &gt;= begindate
+            </if>
+            <if test="endDate!=null">
+                and #{endDate} &lt;= enddate
+            </if>
+            <if test="advanceDays!=null">
+                and curdate()&lt;=date_sub(begindate,interval #{advanceDays} day)
+            </if>
+            <if test="minPersons!=null">
+                and min_persons &lt;= #{minPersons}
+            </if>
+            <if test="maxPersons!=null">
+                and max_persons &gt;= #{maxPersons}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+    
+    <select id="findMerchantServiceCount" parameterType="String" resultType="int">
+		SELECT
+			Count(t_service.id)
+		FROM
+			t_service
+		WHERE
+			t_service.`status`=1
+		AND
+			t_service.cust_id=#{custId}
+    </select>
+</mapper>

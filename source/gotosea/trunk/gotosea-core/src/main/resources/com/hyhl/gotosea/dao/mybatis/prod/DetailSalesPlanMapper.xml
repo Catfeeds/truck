@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.prod.mapper.DetailSalesPlanMapper" >
+    <select id="selectOneMy" parameterType="DetailSalesPlan" resultType="DetailSalesPlan">
+        SELECT * from t_service_detail_sales_plan
+        <where>
+            <if test="offerDate!=null and offerDate!=''">
+                and offer_date = date(#{offerDate})
+            </if>
+            <if test="serviceDetailId!=null">
+                and service_detail_id = #{serviceDetailId}
+            </if>
+        </where>
+    </select>
+</mapper>

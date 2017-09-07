@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.prod.mapper.MerchantResourceMapper" >
+
+    <!--通过资源id获取定位点id-->
+    <select id="listLocatorIdByType" parameterType="integer" resultType="integer">
+        SELECT locator_id
+        FROM t_merchant_resource tmr
+        where merchant_resource_type_id = #{type}
+    </select>
+
+    <resultMap id="mercResoDetail" type="com.hyhl.gotosea.core.prod.vo.MerchantDetail" autoMapping="true">
+        <id column="cust_id" property="custId"/>
+        <collection property="resources" ofType="java.lang.String">
+            <result column="resource"/>
+        </collection>
+        <collection property="mercServes" ofType="com.hyhl.gotosea.core.prod.vo.MercServe" autoMapping="true">
+            <id property="id" column="id"/>
+            <collection property="tags" ofType="java.lang.Integer" >
+                <result column="tag_id" ></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="selectMercResoDetail" resultMap="mercResoDetail">
+        SELECT mr.cust_id,mrt.name AS resource,s.id,s.name,s.sold_num,s.service_type_id,s.price,st.tag_id
+        FROM t_merchant_resource mr
+        LEFT JOIN t_merchant_resource_type mrt ON mrt.id=mr.merchant_resource_type_id
+        LEFT JOIN t_service s ON s.merchant_resource_id=mr.id
+        INNER JOIN t_service_type ste ON ste.id=s.service_type_id AND ste.category=1
+        LEFT JOIN t_service_tag st ON st.service_id=s.id
+        WHERE mr.cust_id=#{id}
+    </select>
+
+    <!--批量更新status(批量软删除)-->
+    <update id="updateStatus" parameterType="integer">
+        update t_merchant_resource set status = #{status} WHERE id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="selectByCond" parameterType="MerchResCond" resultType="MerchantResource">
+        select * from t_merchant_resource
+        <where>
+            <if test="name!=null and name!=''">
+                and name like CONCAT('%', #{name}, '%')
+            </if>
+            <if test="status!=null">
+                and status = status
+            </if>
+            <if test="startDate!=null">
+                and create_time &gt;= #{startDate}
+            </if>
+            <if test="endDate!=null">
+                and create_time &lt;= #{endDate}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectCustIdsByResourceType" resultType="java.lang.Integer">
+        SELECT DISTINCT mr.cust_id
+        FROM t_merchant_resource mr
+        WHERE mr.merchant_resource_type_id =#{resourceTypeId}
+    </select>
+</mapper>

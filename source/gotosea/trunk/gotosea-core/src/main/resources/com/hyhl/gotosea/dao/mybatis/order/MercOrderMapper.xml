@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.order.mapper.MercOrderMapper" >
+
+	<select id="selectPerMercOrderDetail" resultType="com.hyhl.gotosea.core.order.vo.PerMercOrderDetail">
+		SELECT mo.id,mo.order_no,mo.service_fee,mo.create_time,mo.update_time,mo.status,osr.pub_resource_id,
+			   os.name,os.service_date,os.service_num,o.travelers_num,o.contacter,o.contacter_phone
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON os.merchant_order_id=mo.id
+		INNER JOIN t_order o ON os.order_id=o.id
+		LEFT JOIN t_order_service_resource osr ON osr.order_service_id=os.id
+		WHERE mo.id=#{id}
+	</select>
+
+	<select id="selectPerMercOrders" resultType="com.hyhl.gotosea.core.order.vo.PerMercOrders">
+		SELECT mo.id,mo.order_no,mo.create_time,mo.service_fee,mo.status,os.name,os.service_date,os.service_num
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON os.id=mo.order_service_id
+		<where>
+			mo.cust_id=#{custId}
+			<if test="status!=null and status.length>0">
+				AND mo.status IN <foreach collection="status" item="s" open="(" separator="," close=")">#{s}</foreach>
+			</if>
+		</where>
+	</select>
+
+	<select id="selectMercOrderDetail" resultType="com.hyhl.gotosea.core.order.vo.MercOrderDetail">
+		SELECT mo.id,mo.order_no,mo.service_fee,mo.cust_id AS merchant,os.name,os.service_date,os.service_num,
+			 o.travelers_num,o.order_type,o.contacter,o.contacter_phone,o.contacter_remark
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON os.id=mo.order_service_id
+		INNER JOIN t_order o ON o.id =os.order_id
+		WHERE mo.id=#{id}
+	</select>
+
+
+	<select id="selectAllMercOrders" resultType="com.hyhl.gotosea.core.order.vo.AllMercOrder">
+		SELECT mo.id,mo.order_no,mo.create_time,mo.status,os.name,os.service_date,mo.cust_id AS merchant
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON os.id=mo.order_service_id
+		<where>
+			<if test="param.status!=null">
+				 mo.status =#{param.status}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectMercOrderByOrderId" resultType="com.hyhl.gotosea.core.order.po.MercOrder">
+		SELECT mo.*
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON os.id=mo.order_service_id
+		WHERE os.order_id=#{orderId}
+	</select>
+
+	<select id="selectMercOrderWithOrderBegined" resultType="com.hyhl.gotosea.core.order.po.MercOrder">
+		SELECT mo.*
+		FROM t_merchant_order mo
+		INNER JOIN t_order_service os ON mo.order_service_id=os.id
+		INNER JOIN t_order o ON os.order_id=o.id AND o.status=4
+		WHERE mo.id=#{id}
+	</select>
+</mapper>

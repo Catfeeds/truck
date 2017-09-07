@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.comm.dao.TActivityMapper" >
+  <insert id="insertAct" parameterType="ActivityDto" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO t_activity (activity_title,summary,destination,activity_days,begin_date,
+    end_date,gather_time,min_customers,max_customers,business_unit_id,status,refresh_time)
+    VALUES (#{activityTitle},#{summary},#{destination},#{activityDays},#{beginDate},#{endDate},#{gatherTime},#{minCustomers},#{maxCustomers},#{businessUnitId},0,now())
+  </insert>
+
+  <select id="selectByCustId" parameterType="string" resultType="TPost">
+    SELECT * from t_post WHERE section_id = 2 and cust_id = #{custId}
+  </select>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hyhl.gotosea.core.prod.mapper.ServiePubResoMapper" >
+
+    <select id="selectServiePubResoByServeId" resultType="com.hyhl.gotosea.core.prod.vo.ServiePubResoVo">
+        SELECT spr.*,pr.name
+        FROM t_service_pub_resource spr
+        INNER JOIN t_pub_resource pr ON spr.pub_resource_id=pr.id
+        WHERE spr.service_id=#{serveId}
+        ORDER BY spr.id
+    </select>
+</mapper>

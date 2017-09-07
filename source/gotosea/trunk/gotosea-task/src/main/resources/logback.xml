@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+    <Target>System.out</Target>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+  </appender>
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>../logs/task/task.log</File>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    <fileNamePattern>../logs/task/task.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  
+  <appender name="Task-Dead" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>../logs/task/task-dead.log</File>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    <fileNamePattern>../logs/task/task-dead.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  
+  <logger name="com.hyhl.gotosea.task.rabbit.consumer.DeadConsumer" level="info">
+ 	 <appender-ref ref="Task-Dead"/>  
+  </logger>
+  
+  <appender name="Task-Im" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>../logs/task/task-im.log</File>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    <fileNamePattern>../logs/task/task-im.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  
+  <logger name="com.hyhl.gotosea.task.im.producer.ImProducer" level="info">
+ 	 <appender-ref ref="Task-Im"/>  
+  </logger>
+  
+  
+  <appender name="Task-Sms" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>../logs/task/task-sms.log</File>
+    <encoder>
+      <pattern>%date [%level] [%thread] %logger{80} [%file : %line] %msg%n</pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+    <fileNamePattern>../logs/task/task-sms.log.%d{yyyy-MM-dd}</fileNamePattern>
+    </rollingPolicy>
+  </appender>
+  
+  <logger name="com.hyhl.gotosea.task.sms.producer.SmsProducer" level="info">
+ 	 <appender-ref ref="Task-Sms"/>  
+  </logger>
+  
+  
+  <root level="info">
+    <appender-ref ref="Console"/>
+    <appender-ref ref="FILE"/>
+  </root>
+</configuration>

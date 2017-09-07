@@ -1,0 +1,25 @@
+{
+    "code": null,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": {
+        "creator": "船主是我",//创建人
+        "jourId": 2,
+        "jourOrderStatus": 2,
+        "creatorPhone": "15218320101",
+        "jourOrderNo": "20160811102637",
+        "routeId": 1,//线路id
+        "orderTime": "2016-08-11",//付款日期
+        "jourOrderFee": 9798,
+        "createTime": "2016-08-06",
+        "shipNo": "123123",
+        "journeyNo": "12321",
+        "endTime": "2016-04-11",
+        "shipOrderNo": "1472181552351"
+    },
+    "alertType": 0,
+    "alertMsg": null
+}

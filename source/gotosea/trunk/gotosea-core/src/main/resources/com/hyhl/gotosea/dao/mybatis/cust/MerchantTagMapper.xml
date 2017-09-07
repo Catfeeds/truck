@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hyhl.gotosea.core.cust.mapper.MerchantTagMapper">
+
+    <!--获取用户所有tag_id-->
+    <select id="getTagsByCId" parameterType="integer" resultType="integer">
+        select tag_id from t_merchant_tag WHERE cust_id = #{custId}
+    </select>
+
+</mapper>

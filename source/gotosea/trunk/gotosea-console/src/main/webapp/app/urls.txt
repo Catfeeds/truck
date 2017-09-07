@@ -1,0 +1,59 @@
+修改行程出发时间    /console/journey/revise  get请求 参数 id=?  time=?(字符串格式"yyyy-MM-dd")！
+
+
+移除行程参与人   /console/journey/delete post请求 参数  jourId、userId！
+
+
+根据行程订单号查询行程订单详情/console/order/detail get请求 参数orderNo=？ 字符串！
+
+
+
+
+根据船id查询船详情/console/ship/query get请求 参数 id=?
+
+
+根据条件查询船/console/ship/query post请求 参数详情看 com.huayun.fishsea.component.console.ship.vo.QueryParam
+
+
+添加船只/console/ship/add  post请求 参数详情看com.huayun.fishsea.component.console.ship.po.Ship、com.huayun.fishsea.component.console.ship.vo.ShipParam和shipTags
+
+
+修改船只/console/ship/update  post请求  参数详情同“添加船只”
+
+
+批量处理船舶/console/ship/batch post请求   参数 shipIds state status
+
+
+线路分页查询/console/route/query post请求  参数详情看com.huayun.fishsea.component.console.route.vo.QueryParam
+
+
+查询船的当前行程/console/ship/jours get请求 参数 curOrHis=current&shipId=？
+
+
+查询船的历史行程/console/ship/jours get请求 参数 curOrHis=history&shipId=？
+
+
+根据id查询游客或船长基本信息/console/user/query/detail get请求 参数id
+
+
+根据id查询船主或船长证件相关信息/console/user/query/certif get请求 参数id
+
+
+分页查询用户/console/user/query 分页查询 post请求  请求参数参考com.huayun.fishsea.component.console.user.vo.QueryParam
+
+
+添加船主/console/user/add post请求   请求参数参考com.huayun.fishsea.component.console.user.po.User，
+									   com.huayun.fishsea.component.console.user.po.BoatmanCertificate
+									   
+									   
+添加线路/console/route/add post请求  请求参数参考com.huayun.fishsea.component.console.route.po.Route，
+										com.huayun.fishsea.component.console.route.vo.RouteParam	
+									
+
+查看线路详情/console/route/detail		get请求 参数id					 
+
+
+批量处理线路/console/route/batch post请求   参数 routeIds state status  
+
+
+批量从线路移除船舶/console/route/remove get请求 参数 Integer[] shipIds,Integer routeId

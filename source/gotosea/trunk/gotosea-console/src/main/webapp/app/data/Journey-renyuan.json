@@ -1,0 +1,20 @@
+{
+	"code" : null,
+	"version" : "1.0",
+	"success" : true,
+	"error" : 0,
+	"errorMessage" : null,
+	"exceptionMessage" : null,
+	"data" : [{
+				"age" : null,
+				"id" : 4,
+				"idCard" : null,
+				"jourType" : 9,
+				"name" : "钓友01",
+				"phone" : "18718788888",
+				"sex" : 0,
+				"type" : null
+			}],
+	"alertType" : 0,
+	"alertMsg" : null
+}

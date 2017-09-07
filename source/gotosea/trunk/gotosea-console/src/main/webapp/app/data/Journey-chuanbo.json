@@ -1,0 +1,49 @@
+{
+    "code": null,
+    "version": "1.0",
+    "success": true,
+    "error": 0,
+    "errorMessage": null,
+    "exceptionMessage": null,
+    "data": {
+        "boatman": [
+            {
+                "age": null,
+                "id": 3,
+                "idCard": null,
+                "jourType": 1,
+                "name": "土豪君01",
+                "phone": "18811118888",
+                "sex": 0,
+                "type": null
+            },
+            {
+                "age": null,
+                "id": 4,
+                "idCard": null,
+                "jourType": 5,
+                "name": "钓友01",
+                "phone": "18718788888",
+                "sex": 0,
+                "type": null
+            },
+            {
+                "age": null,
+                "id": 5,
+                "idCard": null,
+                "jourType": 5,
+                "name": "钓友02",
+                "phone": "18618536963",
+                "sex": 0,
+                "type": null
+            }
+        ],
+        "orderModel": 1,
+        "shipOrderNo": "20160811104447",
+        "orderTime": 1470883487000,
+        "shipNo": "123123",
+        "canZP":true
+    },
+    "alertType": 0,
+    "alertMsg": null
+}
